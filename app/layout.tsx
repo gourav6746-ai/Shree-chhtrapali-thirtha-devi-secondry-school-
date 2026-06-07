@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${cormorant.variable} ${hind.variable} scroll-smooth`}>
-      <body className="font-sans bg-[#f8fafc] text-[#374151] antialiased" suppressHydrationWarning>
+      <body className="font-sans bg-[#f9f7f2] text-[#2d2d2d] antialiased" suppressHydrationWarning>
         {children}
       </body>
     </html>

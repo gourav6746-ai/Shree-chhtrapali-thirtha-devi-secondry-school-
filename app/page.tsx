@@ -225,27 +225,126 @@ const galleryImages = [
     titleEn: 'Academic Enrollment Rally & Literacy Drive',
     titleNp: 'नयाँ विद्यार्थी भर्ना अभियान २०७६',
     descEn: 'Dedicated school educators, principal, and social contributors holding campaigns and banners inPakadi Kapilvastu.',
-   // Image load error fallback handler
-  const handleFeaturedImageError = (e: React.SyntheticEvent<HTMLImageElement>, id: number) => {
-    const backupUrls = [
-      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1000&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1000&auto=format&fit=crop&q=80'
-    ];
-    e.currentTarget.src = backupUrls[(id - 1) % backupUrls.length];
-  };
+    descNp: 'मायादेवी गाउँपालिका क्षेत्रमा सम्पूर्ण घरधुरीका बालबालिकालाई विद्यालय आउन प्रेरित गर्दै निकालिएको चेतनामूलक र्‍याली।',
+  },
+  {
+    id: 8,
+    src: '/input_file_7.png',
+    titleEn: 'Bicycle Lots & Green Secondary Campus Facade',
+    titleNp: 'माध्यमिक ब्लक र साइकल स्ट्यान्डको बाहिरी दृश्य',
+    descEn: 'Wide exterior perspective of the original administrative layout showing local Kapilvastu student mobility and clean spaces.',
+    descNp: 'विद्यार्थीहरूले पार्क गरेका अनगिन्ती साइकलहरूको बीचबाट देखिने कक्षा कोठाहरूको सफा र उज्यालो शैक्षिक भवन।',
+  },
+];
 
-  return (
-    <div id="school-portal" className="min-h-screen flex flex-col font-sans select-none selection:bg-[#123A6D] selection:text-white bg-[#f8fafc]">
-      
-      {/* ────────────────────────────────────────────────────────
-          1. NAVBAR & BILINGUAL TOGGLE
-          ──────────────────────────────────────────────────────── */}�ि बुझाउनुपर्ने सिफारिस तथा कागजातहरू फागुन ३० गतेभित्र बुझाउनुहोला।',
+// Realistic Staff members with Devanagari details
+const staffList = [
+  {
+    id: 1,
+    nameEn: 'Mr. Ram Prasad Sharma',
+    nameNp: 'श्री राम प्रसाद शर्मा',
+    roleEn: 'Principal',
+    roleNp: 'प्रधानाध्यापक',
+    subjectEn: 'School Administration & Policy',
+    subjectNp: 'विद्यालय प्रशासन तथा नेतृत्व',
+    initials: 'RPS',
+    color: 'bg-[#1a2744]',
+  },
+  {
+    id: 2,
+    nameEn: 'Mrs. Sita Ghalan',
+    nameNp: 'श्रीमती सीता घलान',
+    roleEn: 'Senior Lecturer',
+    roleNp: 'वरिष्ठ माध्यमिक शिक्षक',
+    subjectEn: 'English Language & Literature',
+    subjectNp: 'अंग्रेजी भाषा तथा साहित्य',
+    initials: 'SG',
+    color: 'bg-[#c9a227]',
+  },
+  {
+    id: 3,
+    nameEn: 'Mr. Manoj Chaudhary',
+    nameNp: 'श्री मनोज चौधरी',
+    roleEn: 'Faculty Head — Management',
+    roleNp: 'संकाय प्रमुख — व्यवस्थापन',
+    subjectEn: 'Accountancy, Finance & Business Studies',
+    subjectNp: 'लेखा, वित्त तथा व्यवसाय अध्ययन',
+    initials: 'MC',
+    color: 'bg-emerald-700',
+  },
+  {
+    id: 4,
+    nameEn: 'Mrs. Goma Devi Paudel',
+    nameNp: 'श्रीमती गोमा देवी पौडेल',
+    roleEn: 'Secondary Coordinator',
+    roleNp: 'माध्यमिक तह संयोजक',
+    subjectEn: 'General Science & Biology',
+    subjectNp: 'विज्ञान तथा जीवविज्ञान',
+    initials: 'GDP',
+    color: 'bg-rose-700',
+  },
+  {
+    id: 5,
+    nameEn: 'Mr. Binod Kumar Gupta',
+    nameNp: 'श्री बिनोड कुमार गुप्ता',
+    roleEn: 'Senior Lecturer — Education Faculty',
+    roleNp: 'वरिष्ठ शिक्षक — शिक्षा संकाय',
+    subjectEn: 'Educational Psychology & Pedagogy',
+    subjectNp: 'शिक्षाशास्त्र, पाठ्यक्रम र मनोविज्ञान',
+    initials: 'BKG',
+    color: 'bg-indigo-700',
+  },
+  {
+    id: 6,
+    nameEn: 'Mr. Ramesh Pokhrel',
+    nameNp: 'श्री रमेश पोखरेल',
+    roleEn: 'IT Supervisor & Instructor',
+    roleNp: 'सूचना प्रविधि प्रमुख',
+    subjectEn: 'Computer Science & Lab Practical Work',
+    subjectNp: 'कम्प्युटर विज्ञान र प्रयोगात्मक कार्य',
+    initials: 'RP',
+    color: 'bg-teal-700',
+  }
+];
+
+// Notice board items with Nepali dates (BS Calendar)
+const noticesList = [
+  {
+    id: 1,
+    titleEn: 'Admission Open for 2081-82 Academic Session',
+    titleNp: 'शैक्षिक सत्र २०८१-८२ को लागि नयाँ विद्यार्थी भर्ना खुल्यो!',
+    descEn: 'Admissions are officially open for Primary, Secondary (Grade 6-9), and Plus Two Management & Education faculties. Please collect registration forms from the admin office.',
+    descNp: 'प्राथमिक तह, माध्यमिक तह (कक्षा ६-९) र कक्षा ११ व्यवस्थापन तथा शिक्षा संकाय दुवैमा शैक्षिक सत्र २०८१-८१ का लागि फारम वितरण सुरु भएको छ। समयमै भर्ना आरक्षित गराउनुहोला।',
+    dateEn: 'Falgun 15, 2081 BS',
+    dateNp: '१५ फागुन २०८१',
+    isNew: true,
+  },
+  {
+    id: 2,
+    titleEn: 'Plus Two National board (+2) Result Published',
+    titleNp: 'कक्षा १२ (+२) संकायको गौरवमय नतिजा प्रकाशन सम्बन्धमा',
+    descEn: 'The National Examination Board (NEB) class 12 results are published. All students can check their marksheets at the school administrative counter.',
+    descNp: 'व्यवस्थापन तथा शिक्षा संकाय अन्तर्गत परीक्षाको अन्तिम ग्रेड-सिट र परीक्षाफल विवरण प्रकाशन भएको छ। आफ्नो मार्कसिट विवरण प्रशासकीय कक्षमा बुझ्न सूचित गरिन्छ।',
+    dateEn: 'Magh 28, 2081 BS',
+    dateNp: '२८ माघ २०८१',
+    isNew: false,
+  },
+  {
+    id: 3,
+    titleEn: 'Annual Sports Day & Extracurricular Carnival',
+    titleNp: 'वार्षिक खेलकुद सप्ताह - भव्य आयोजना चैत १५ गते',
+    descEn: 'The most anticipated school sports carnival is scheduled from Chaitra 15, featuring competitive football, volleyball, high-jump, and athletic tournaments.',
+    descNp: 'छात्र-छात्राको सर्वाङ्गीण विकासका लागि वार्षिक खेलकुद हप्ता चैत १५ देखि सुरु हुनेछ। इच्छुक प्रतिस्पर्धी विद्यार्थीले आफ्नो नाम खेल शिक्षक रमेश पोखरेललाई दर्ता गराउनुहोला।',
+    dateEn: 'Magh 10, 2081 BS',
+    dateNp: '१० माघ २०८१',
+    isNew: false,
+  },
+  {
+    id: 4,
+    titleEn: 'Merit & Need-Based Scholarship Form Deadline',
+    titleNp: 'जेहेन्दार तथा लक्षित छात्रवृत्ति आवेदन फारम बुझाउने मिति',
+    descEn: 'Eligible underprivileged, female, and meritorious students must submit their complete documentation for full fee waivers by Falgun 30 explicitly.',
+    descNp: 'गरिब, अल्पसंख्यक, अपाङ्गता भएका र शैक्षिक रूपमा उत्कृष्ट विद्यार्थीले विशेष छात्रवृत्तिका लागि बुझाउनुपर्ने सिफारिस तथा कागजातहरू फागुन ३० गतेभित्र बुझाउनुहोला।',
     dateEn: 'Poush 25, 2081 BS',
     dateNp: '२५ पुस २०८१',
     isNew: false,
@@ -253,7 +352,7 @@ const galleryImages = [
 ];
 
 export default function SchoolHomePage() {
-  const [lang, setLang] = useState<'en' | 'np'>('en');
+  const [lang, setLang] = useState<Language>('en');
   const [navOpen, setNavOpen] = useState(false);
   const [isShrunk, setIsShrunk] = useState(false);
   const [activeTab, setActiveTab] = useState('all');
@@ -321,74 +420,24 @@ export default function SchoolHomePage() {
   };
 
   // Image load error fallback handler
-  const handleFeaturedImageError = (e: React.SyntheticEvent<HTMLImageElement>, id: number) => {
+  const handleFeaturedImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, id: number) => {
     const backupUrls = [
-      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&aut      {/* Mobile Navigation Panel */}
-        {navOpen && (
-          <div className="lg:hidden bg-[#123A6D] border-t border-[#0c274b] transition-all duration-300 mt-0">
-            <div className="flex flex-col px-4 py-5 gap-3">
-              <a 
-                href="#hero-container" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'Home' : 'गृहपृष्ठ'}
-              </a>
-              <a 
-                href="#about-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'About Our School' : 'हाम्रो बारेमा'}
-              </a>
-              <a 
-                href="#programs-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'Programs Offered' : 'शैक्षिक कार्यक्रमहरू'}
-              </a>
-              <a 
-                href="#facilities-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'Facilities & Infrastructure' : 'विद्यालयका सुविधाहरू'}
-              </a>
-              <a 
-                href="#gallery-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'Photo Gallery' : 'तस्वीर सङ्ग्रह'}
-              </a>
-              <a 
-                href="#staff-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'Our Faculty Staff' : 'हाम्रो शिक्षक टोली'}
-              </a>
-              <a 
-                href="#notices-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-[#0c274b] text-gray-200 hover:text-white flex items-center justify-between"
-              >
-                <span>{lang === 'en' ? 'Notices & Board' : 'सूचना पाटी'}</span>
-                <span className="px-1.5 py-0.5 rounded bg-red-500 text-white text-[10px] uppercase font-bold tracking-widest">Live</span>
-              </a>
-              <a 
-                href="#contact-section" 
-                onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 text-gray-200 hover:text-white"
-              >
-                {lang === 'en' ? 'Contact Directory' : 'सम्पर्क ठेगाना'}
-              </a>
-            </div>
-          </div>
-        )}
-      </nav>
-    </div>��──
+      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop&q=80', // School facade
+      'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop&q=80', // School brick building
+      'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&auto=format&fit=crop&q=80', // Group of students
+      'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1000&auto=format&fit=crop&q=80', // Learning interaction
+      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1000&auto=format&fit=crop&q=80', // Meeting presentation
+      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1000&auto=format&fit=crop&q=80', // Community conference
+      'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1000&auto=format&fit=crop&q=80', // Education books
+      'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1000&auto=format&fit=crop&q=80'  // Student group
+    ];
+    e.currentTarget.src = backupUrls[(id - 1) % backupUrls.length];
+  };
+
+  return (
+    <div id="school-portal" className="min-h-screen flex flex-col font-sans select-none selection:bg-[#c9a227] selection:text-white">
+      
+      {/* ────────────────────────────────────────────────────────
           1. NAVBAR & BILINGUAL TOGGLE
           ──────────────────────────────────────────────────────── */}
       <nav 
@@ -485,7 +534,7 @@ export default function SchoolHomePage() {
 
         {/* Mobile Navigation Panel */}
         {navOpen && (
-          <div className="lg:hidden bg-[#123A6D] border-t border-[#0c274b] transition-all duration-300 mt-0">
+          <div className="lg:hidden bg-[#16213a]/98 border-t border-gray-800 transition-all duration-300">
             <div className="flex flex-col px-4 py-5 gap-3">
               <a 
                 href="#hero-container" 
@@ -550,52 +599,48 @@ export default function SchoolHomePage() {
       </nav>
 
       {/* ────────────────────────────────────────────────────────
-          2. HERO SECTION (GOVERNMENT PORTAL DESIGN)
+          2. HERO SECTION
           ──────────────────────────────────────────────────────── */}
       <section 
         id="hero-container" 
-        className="relative pt-36 pb-16 overflow-hidden min-h-[85vh] flex items-center bg-[#f8fafc]"
+        className="relative pt-24 overflow-hidden min-h-[92vh] flex items-center bg-gradient-to-br from-[#10192e] via-[#1a2744] to-[#0a1120]"
       >
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'radial-gradient(circle, #123A6D 1px, transparent 1px)',
+        {/* Animated radial grid and particle dots layer */}
+        <div className="absolute inset-0 opacity-15" style={{
+          backgroundImage: 'radial-gradient(circle, #c9a227 1px, transparent 1px)',
           backgroundSize: '24px 24px'
         }}></div>
 
-        {/* Soft layout highlights */}
-        <div className="absolute top-1/4 right-[5%] w-80 h-80 rounded-full bg-[#123A6D]/5 blur-[90px]"></div>
+        {/* Ambient warm glow lights - subtle gold & soft blue, strict NO purple */}
+        <div className="absolute top-1/4 right-[5%] w-80 h-80 rounded-full bg-[#c9a227]/10 blur-[90px]"></div>
+        <div className="absolute bottom-1/4 left-[5%] w-80 h-80 rounded-full bg-[#1a2744]/40 blur-[100px]"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Slogans and Call to actions */}
             <div className="lg:col-span-7 flex flex-col items-start gap-6">
               
               {/* Top tiny crest sticker */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#123A6D]/10 border border-[#123A6D]/20 rounded-full text-xs text-[#123A6D] font-bold tracking-wider uppercase">
-                <span>{lang === 'en' ? 'Government Approved Portal' : 'नेपाल सरकार सम्बन्धन प्राप्त शैक्षिक डिजिटल पोर्टल'}</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#c9a227]/10 border border-[#c9a227]/25 rounded-full text-xs text-[#c9a227] font-semibold tracking-wider uppercase animate-fade-in">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>{lang === 'en' ? 'Government Approved Affiliations' : 'नेपाल सरकार सम्बन्धन प्राप्त'}</span>
               </div>
               
               {/* Massive school names */}
               <div className="flex flex-col gap-2">
-                <span className="text-xs uppercase tracking-widest text-[#123A6D] font-bold">
-                  {lang === 'en' ? 'Welcome to' : 'कृपायुक्त स्वागत छ'}
-                </span>
-                <h1 className="text-4xl md:text-5xl lg:text-5xl font-serif text-[#123A6D] font-bold leading-tight tracking-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white font-semibold leading-tight tracking-tight">
                   {lang === 'en' ? 'Shree Chhatrapali' : 'श्री छत्रपाली'}
                 </h1>
-                <h2 className="text-3xl md:text-4xl lg:text-4xl font-serif text-[#374151] font-semibold leading-none mb-1">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white font-medium italic text-[#c9a227] leading-none mb-1">
                   {lang === 'en' ? 'Tirthadevi Secondary School' : 'तीर्थादेवी माध्यमिक विद्यालय'}
                 </h2>
-                <p className="text-xs text-[#526071] uppercase tracking-widest font-mono">
-                  {lang === 'en' ? 'Pakadi, Kapilvastu, Lumbini, Nepal | Estd. 2016 BS' : 'पकडी, मायादेवी-१, कपिलवस्तु, लुम्बिनी प्रदेश | स्थापना: २०१६ BS'}
-                </p>
-                <div className="w-16 h-1 bg-[#123A6D] my-2 rounded-full"></div>
+                <div className="w-20 h-1 bg-[#c9a227] my-3 rounded-full"></div>
               </div>
 
               {/* Tagline bilingual representation */}
-              <p className="text-base md:text-lg text-[#374151] font-sans max-w-2xl leading-relaxed">
-                <strong className="text-[#123A6D] block text-lg font-medium mb-1.5 md:mb-2">
+              <p className="text-base md:text-lg text-gray-300 font-sans max-w-2xl leading-relaxed">
+                <strong className="text-white block text-lg font-medium mb-1.5 md:mb-2">
                   {lang === 'en' 
                     ? 'Empowering Minds, Building Futures' 
                     : 'ज्ञानले जीवन उज्यालो पार्छ र भविष्य निर्माण गर्छ।'}
@@ -606,44 +651,44 @@ export default function SchoolHomePage() {
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+              <div className="flex flex-wrap items-center gap-4 pt-4 w-full sm:w-auto">
                 <a 
                   href="#contact-section" 
-                  className="w-full sm:w-auto text-center px-7 py-3.5 bg-[#123A6D] text-white hover:bg-[#0c274b] font-bold text-sm tracking-uppercase tracking-wider rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto text-center px-7 py-3.5 bg-[#c9a227] hover:bg-[#b08d20] text-[#1a2744] font-bold text-sm tracking-uppercase tracking-wider rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
                 >
-                  <Check className="w-4 h-4 text-white" />
+                  <Check className="w-4 h-4 text-[#1a2744]" />
                   <span>{lang === 'en' ? 'Apply for Admission' : 'भर्ना आवेदन फारम'}</span>
                 </a>
                 
                 <a 
                   href="#about-section" 
-                  className="w-full sm:w-auto text-center px-7 py-3.5 bg-white border-2 border-slate-300 hover:border-[#123A6D] text-[#123A6D] hover:text-[#123A6D] font-bold text-sm tracking-uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto text-center px-7 py-3.5 bg-transparent border-2 border-gray-400 hover:border-[#c9a227] hover:text-[#c9a227] text-white font-semibold text-sm tracking-uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2"
                 >
-                  <span>{lang === 'en' ? 'Learn More' : 'विवरण अन्वेषण गर्नुहोस्'}</span>
+                  <span>{lang === 'en' ? 'Learn More' : 'थप अन्वेषण गर्नुहोस'}</span>
                   <ChevronRight className="w-4 h-4" />
                 </a>
               </div>
 
               {/* Quick Info Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-slate-200 w-full max-w-xl">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-10 border-t border-gray-800 w-full max-w-xl">
                 <div>
-                  <h4 className="text-[#123A6D] font-serif text-2xl font-bold">Kapilvastu</h4>
-                  <p className="text-[#526071] text-xs uppercase tracking-widest">{lang === 'en' ? 'Pakadi Location' : 'कपिलवस्तु पकडी'}</p>
+                  <h4 className="text-[#c9a227] font-serif text-2xl font-bold">Kapilvastu</h4>
+                  <p className="text-gray-400 text-xs uppercase tracking-widest">{lang === 'en' ? 'Pakadi Location' : 'कपिलवस्तु पकडी'}</p>
                 </div>
                 <div>
-                  <h4 className="text-[#123A6D] font-serif text-2xl font-bold">NEB & Govt</h4>
-                  <p className="text-[#526071] text-xs uppercase tracking-widest">{lang === 'en' ? 'Full Affiliation' : 'आधिकारिक मान्यता'}</p>
+                  <h4 className="text-[#c9a227] font-serif text-2xl font-bold">NEB & govt</h4>
+                  <p className="text-gray-400 text-xs uppercase tracking-widest">{lang === 'en' ? 'Full Affiliation' : 'आधिकारिक मान्यता'}</p>
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                  <h4 className="text-[#123A6D] font-serif text-2xl font-bold">4 Faculties</h4>
-                  <p className="text-[#526071] text-xs uppercase tracking-widest">{lang === 'en' ? 'Academic Scope' : 'एकेडेमिक स्तर'}</p>
+                  <h4 className="text-[#c9a227] font-serif text-2xl font-bold">4 Faculties</h4>
+                  <p className="text-gray-400 text-xs uppercase tracking-widest">{lang === 'en' ? 'Comprehensive Scope' : 'एकेडेमिक स्तर'}</p>
                 </div>
               </div>
             </div>
 
             {/* Left Image box representing real classes / school view in parallax container */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-[420px] lg:max-w-none rounded-2xl border-4 border-[#123A6D]/10 p-2 overflow-hidden shadow-xl bg-white">
+              <div className="relative mx-auto max-w-[420px] lg:max-w-none rounded-2xl border-4 border-[#c9a227]/20 p-2 overflow-hidden shadow-2xl bg-[#16213a]">
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                   <img 
                     src="/input_file_1.png"
@@ -652,22 +697,23 @@ export default function SchoolHomePage() {
                     onError={(e) => handleFeaturedImageError(e, 1)}
                   />
                   {/* Subtle dark gradient overlay inside picture banner */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-6">
                     <span className="text-[10px] uppercase text-[#c9a227] tracking-wider font-bold mb-1">
                       {lang === 'en' ? 'Academic Hub' : 'हाम्रो मूल केन्द्र'}
                     </span>
                     <h3 className="text-lg md:text-xl font-serif text-white font-semibold">
-                      {lang === 'en' ? 'Main Secondary Academic Block' : 'मुख्य माध्यमिक शैक्षिक भवन'}
+                      {lang === 'en' ? 'Main ECD Academic Block' : 'मुख्य माध्यमिक शैक्षिक भवन'}
                     </h3>
-                    <p className="text-xs text-slate-300">
-                      {lang === 'en' ? 'Pakadi, Mayadevi Municipality' : 'मायादेवी गाउँपालिका, कपिलवस्तु पकडी'}
+                    <p className="text-xs text-gray-300">
+                      {lang === 'en' ? 'Pakadi, Kapilvastu, Lumbini Province' : 'मायादेवी गाउँपालिका, कपिलवस्तु पकडी'}
                     </p>
                   </div>
                 </div>
               </div>
               
               {/* Backing decorative shapes */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#123A6D]/5 -z-10 rounded-xl border border-[#123A6D]/10"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#c9a227]/10 -z-10 rounded-xl border border-[#c9a227]/10"></div>
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#1a2744]/40 -z-10 rounded-full blur-xl"></div>
             </div>
 
           </div>
@@ -684,7 +730,7 @@ export default function SchoolHomePage() {
           ──────────────────────────────────────────────────────── */}
       <section 
         id="about-section" 
-        className="py-16 md:py-24 bg-white scroll-reveal"
+        className="py-16 md:py-24 bg-[#f9f7f2] scroll-reveal"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -692,13 +738,13 @@ export default function SchoolHomePage() {
             {/* Side columns: badges, quick affiliations facts */}
             <div className="lg:col-span-5 flex flex-col gap-8 md:sticky md:top-28">
               <div className="flex flex-col gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#123A6D]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#c9a227]">
                   {lang === 'en' ? 'About Our School' : 'हाम्रो गौरवमय परिचय'}
                 </span>
-                <h2 className="text-3xl md:text-4xl font-serif text-[#123A6D] font-bold tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-serif text-[#1a2744] font-semibold tracking-tight">
                   {lang === 'en' ? 'A Legacy of Excellence' : 'उच्च गुणस्तर, सुलभ पहुँच'}
                 </h2>
-                <div className="w-16 h-1 bg-[#123A6D]/20 mt-1"></div>
+                <div className="w-16 h-1 bg-[#c9a227] mt-1"></div>
               </div>
 
               {/* School badge certificates */}
