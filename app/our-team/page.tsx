@@ -5,6 +5,71 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Globe, Search, Award, HelpCircle, Phone, Mail, Sparkles, BookOpen } from 'lucide-react';
 
+// ==========================================
+// OFFICIAL SCHOOL LOGO SVG COMPONENT
+// ==========================================
+function SchoolLogo({ className = "w-24 h-24" }: { className?: string }) {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 200 200" 
+      className={className}
+    >
+      {/* 1. Outermost Rings */}
+      <circle cx="100" cy="100" r="95" stroke="#0f2e82" strokeWidth="2.5" fill="white" />
+      <circle cx="100" cy="100" r="90" stroke="#0f2e82" strokeWidth="1" fill="none" />
+      <circle cx="100" cy="100" r="66" stroke="#0f2e82" strokeWidth="1.5" fill="none" />
+      
+      {/* 2. Text Paths */}
+      {/* Top curved path (Clockwise from 9 to 3 o'clock over the top) */}
+      <path id="top-curve" d="M 22,100 A 78,78 0 0,1 178,100" fill="none" stroke="none" />
+      {/* Bottom curved path (Clockwise from 3 to 9 o'clock under the bottom) */}
+      <path id="bottom-curve" d="M 178,100 A 78,78 0 0,1 22,100" fill="none" stroke="none" />
+      
+      {/* Top Text: श्री छत्रपाली तीर्था देवी माध्यमिक विद्यालय */}
+      <text className="fill-[#0f2e82] font-semibold text-[11px] select-none">
+        <textPath href="#top-curve" startOffset="50%" textAnchor="middle" letterSpacing="0.2">
+          श्री छत्रपाली तीर्था देवी माध्यमिक विद्यालय
+        </textPath>
+      </text>
+      
+      {/* Bottom Text: मायादेवी १ पकडी क.ब */}
+      <text className="fill-[#0f2e82] font-semibold text-[11.5px] select-none">
+        <textPath href="#bottom-curve" startOffset="50%" textAnchor="middle" letterSpacing="0.3">
+          मायादेवी १ पकडी क.ब
+        </textPath>
+      </text>
+
+      {/* 3. Stars on left and right */}
+      <text x="36" y="114" fill="#0f2e82" fontSize="12" textAnchor="middle" className="select-none">★</text>
+      <text x="164" y="114" fill="#0f2e82" fontSize="12" textAnchor="middle" className="select-none">★</text>
+      
+      {/* 4. Overlapping triangles (Star of David) */}
+      {/* Center is at (100, 100), radius of hexagram is 32 */}
+      {/* Triangle 1 (Upward): top (100, 68), bottom-right (127.7, 116), bottom-left (72.3, 116) */}
+      <polygon points="100,66 128.5,115 71.5,115" stroke="#0f2e82" strokeWidth="2" fill="none" strokeLinejoin="round" />
+      {/* Triangle 2 (Downward): bottom (100, 134), top-left (71.5, 85), top-right (128.5, 85) */}
+      <polygon points="100,134 71.5,85 128.5,85" stroke="#0f2e82" strokeWidth="2" fill="none" strokeLinejoin="round" />
+      
+      {/* 5. Center Book inside the hexagram (Centered at 100, 100) */}
+      {/* Inner space is bounded from y=85 to y=115. Center of star is 100, 100. */}
+      <path 
+        d="M 100,92 Q 92,88 84,91 L 84,107 Q 92,104 100,108 Q 108,104 116,107 L 116,91 Q 108,88 100,92 Z" 
+        stroke="#0f2e82" 
+        strokeWidth="1.8" 
+        fill="none" 
+        strokeLinejoin="round" 
+      />
+      <line x1="100" y1="92" x2="100" y2="108" stroke="#0f2e82" strokeWidth="1.8" />
+      
+      {/* 6. Year below the book (२०१६) inside the circle */}
+      <text x="100" y="148" fill="#0f2e82" fontSize="10.5" fontWeight="bold" textAnchor="middle" className="select-none font-sans">
+        २०१६
+      </text>
+    </svg>
+  );
+}
+
 // Roster Dataset for Shree Chhatrapali Tirthadevi Secondary School
 const completeTeam = [
   // 1. Leadership
@@ -249,20 +314,54 @@ export default function OurTeamPage() {
     <div className="min-h-screen bg-[#f9f7f2] text-[#2d2d2d] selection:bg-[#c9a227]/30 flex flex-col font-sans">
       
       {/* ────────────────────────────────────────────────────────
-          1. ELEGANT HEADER BAR (Mirroring SCTS Main Page theme)
+          1. REGAL HEADER BRANDING (At the very top)
           ──────────────────────────────────────────────────────── */}
-      <nav id="header-nav" className="sticky top-0 z-50 bg-[#16213a]/95 backdrop-blur-md border-b border-[#c9a227]/20 shadow-md py-4">
+      <header className="bg-gradient-to-b from-white via-[#fdfcf9] to-[#f9f7f2] border-b border-gray-200 py-6 px-4 flex flex-col items-center justify-center text-center relative overflow-hidden select-none">
+        {/* Subtle background decoration curves */}
+        <div className="absolute top-0 left-0 w-48 h-48 bg-[#0f2e82]/5 rounded-br-full pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-48 h-48 bg-[#c9a227]/5 rounded-bl-full pointer-events-none"></div>
+        
+        {/* School Name in Nepali & English - SABSE UPPER (At the very top) */}
+        <div className="flex flex-col items-center gap-1.5 z-10">
+          {/* Highly polished Nepali Devanagari heading */}
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold font-serif tracking-wide leading-tight drop-shadow-sm select-none">
+            <span className="text-[#0f2e82]">श्री छत्रपाली तीर्था देवी </span>
+            <span className="text-[#c9a227]">माध्यमिक विद्यालय</span>
+          </h1>
+          
+          {/* Subheading English with elegant serif lettering */}
+          <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-wide font-sans select-none leading-none mt-1">
+            <span className="text-[#0f2e82]">Shree Chhatrapali Tirthadevi </span>
+            <span className="text-[#c9a227]">Secondary School</span>
+          </h2>
+          
+          {/* Metadata tagline */}
+          <div className="flex items-center gap-2 mt-1 px-3 py-0.5 rounded-full bg-[#0f2e82]/5 text-[10px] sm:text-[11px] font-mono tracking-wider text-[#0f2e82]/90 uppercase font-medium">
+            <span>Mayadevi-1, Pakadi, Kapilvastu, Nepal</span>
+            <span className="text-gray-300">•</span>
+            <span className="text-[#c9a227]">Estd: 2016 VS</span>
+          </div>
+        </div>
+
+        {/* Central Logo - Underneath the topmost name */}
+        <div className="mt-5 hover:scale-105 transition-transform duration-300 z-10 filter drop-shadow-md">
+          <SchoolLogo className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32" />
+        </div>
+      </header>
+      
+      {/* ────────────────────────────────────────────────────────
+          2. STICKY NAVIGATION BAR & BILINGUAL TOGGLE
+          ──────────────────────────────────────────────────────── */}
+      <nav id="header-nav" className="sticky top-0 z-45 bg-[#1a2744] shadow-md py-3 text-white transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-full border-2 border-[#c9a227] bg-white flex items-center justify-center font-bold text-[#1a2744] text-sm shadow-inner shrink-0 group-hover:scale-105 transition-transform">
-              SCTS
-            </div>
+            <SchoolLogo className="w-9 h-9 rounded-full bg-white p-0.5 shadow-sm group-hover:scale-105 transition-transform" />
             <div className="flex flex-col">
               <span className="text-xs font-semibold tracking-wide font-serif text-[#c9a227]">
                 {lang === 'en' ? 'Shree Chhatrapali Tirthadevi' : 'श्री छत्रपाली तीर्थादेवी'}
               </span>
-              <span className="text-[10px] uppercase tracking-wider text-gray-300">
-                {lang === 'en' ? 'Secondary School • Nepal' : 'माध्यमिक विद्यालय • कपिलवस्तु'}
+              <span className="text-[9px] uppercase tracking-wider text-gray-300 leading-none">
+                {lang === 'en' ? 'Secondary School' : 'माध्यमिक विद्यालय'}
               </span>
             </div>
           </Link>
@@ -330,7 +429,7 @@ export default function OurTeamPage() {
       {/* ────────────────────────────────────────────────────────
           3. REAL-TIME FILTERS AND SEARCH COMPONENT
           ──────────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-200 py-6 sticky top-[72px] z-40 shadow-sm">
+      <section className="bg-white border-b border-gray-200 py-4 lg:py-6 lg:sticky lg:top-[61px] relative z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
             
