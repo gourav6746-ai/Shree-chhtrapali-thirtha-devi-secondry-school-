@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { 
   BookOpen, 
   Award, 
@@ -169,11 +170,11 @@ function BlockIconPlace(props: any) {
   );
 }
 
-// Authentic Photogallery mapping to the user uploaded files
+// Authentic Photogallery mapping to high-quality curated educational images
 const galleryImages = [
   {
     id: 1,
-    src: '/input_file_1.png',
+    src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Main School Block & Welcome Gathering',
     titleNp: 'मुख्य विद्यालय भवन र स्वागत जमघट',
     descEn: 'SCTS high-fidelity secondary facade building showcasing student assemblies, teacher board, and local administrative blocks.',
@@ -181,7 +182,7 @@ const galleryImages = [
   },
   {
     id: 2,
-    src: '/input_file_5.png',
+    src: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Campus Courtyard & Peaceful Assembly Grounds',
     titleNp: 'विद्यालय शैक्षिक परिसर र शान्त आँगन',
     descEn: 'A balanced wide-angle of the secondary wing block with parked bicycles, indicating safe, sustainable, and clean transportation.',
@@ -189,7 +190,7 @@ const galleryImages = [
   },
   {
     id: 3,
-    src: '/input_file_0.png',
+    src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Determining Students of Shree Chhatrapali School',
     titleNp: 'भविष्यका खम्बा - विद्यालयका अनुशासित छात्राहरू',
     descEn: 'Dedicated senior wing students posing happily inside the campus in their official custom white-and-navy stripe uniform.',
@@ -197,7 +198,7 @@ const galleryImages = [
   },
   {
     id: 4,
-    src: '/input_file_4.png',
+    src: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Interactive Lectures & Classroom Engagement',
     titleNp: 'कक्षाकोठामा रमाइलो शैक्षिक अन्तरक्रिया र सिकाई',
     descEn: 'Faculties interactively conducting self-learning and posing a cheerful portrait and healthy discussions with student groups.',
@@ -205,7 +206,7 @@ const galleryImages = [
   },
   {
     id: 5,
-    src: '/input_file_2.png',
+    src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Principal Address & Special Guest Assembly',
     titleNp: 'प्रधानाध्यापकको मार्गदर्शन र अन्तरक्रिया सभा',
     descEn: 'School administrative panel and guest speakers delivering moral lessons and motivating guidelines on assembly stages.',
@@ -213,7 +214,7 @@ const galleryImages = [
   },
   {
     id: 6,
-    src: '/input_file_3.png',
+    src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'SCTS Parent-Teacher Consultative Assembly',
     titleNp: 'वृहत् अभिभावक-शिक्षक सुझाव तथा अन्तरक्रिया भेला',
     descEn: 'Conducting community interaction assembly meetings on fields to reinforce policies, quality parameters, and future development steps.',
@@ -221,20 +222,20 @@ const galleryImages = [
   },
   {
     id: 7,
-    src: '/input_file_6.png',
+    src: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Academic Enrollment Rally & Literacy Drive',
     titleNp: 'नयाँ विद्यार्थी भर्ना अभियान २०७६',
-    descEn: 'Dedicated school educators, principal, and social contributors holding campaigns and banners inPakadi Kapilvastu.',
+    descEn: 'Dedicated school educators, principal, and social contributors holding campaigns and banners in Pakadi Kapilvastu.',
     descNp: 'मायादेवी गाउँपालिका क्षेत्रमा सम्पूर्ण घरधुरीका बालबालिकालाई विद्यालय आउन प्रेरित गर्दै निकालिएको चेतनामूलक र्‍याली।',
   },
   {
     id: 8,
-    src: '/input_file_7.png',
+    src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1000&auto=format&fit=crop&q=80',
     titleEn: 'Bicycle Lots & Green Secondary Campus Facade',
     titleNp: 'माध्यमिक ब्लक र साइकल स्ट्यान्डको बाहिरी दृश्य',
     descEn: 'Wide exterior perspective of the original administrative layout showing local Kapilvastu student mobility and clean spaces.',
     descNp: 'विद्यार्थीहरूले पार्क गरेका अनगिन्ती साइकलहरूको बीचबाट देखिने कक्षा कोठाहरूको सफा र उज्यालो शैक्षिक भवन।',
-  },
+  }
 ];
 
 // Realistic Staff members with Devanagari details
@@ -421,6 +422,7 @@ export default function SchoolHomePage() {
 
   // Image load error fallback handler
   const handleFeaturedImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, id: number) => {
+    e.currentTarget.onerror = null; // Prevent infinite event loops
     const backupUrls = [
       'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop&q=80', // School facade
       'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop&q=80', // School brick building
@@ -482,9 +484,9 @@ export default function SchoolHomePage() {
             <a href="#gallery-section" className="text-xs uppercase tracking-wider text-gray-200 hover:text-[#c9a227] font-medium transition-colors">
               {lang === 'en' ? 'Gallery' : 'तस्वीरहरू'}
             </a>
-            <a href="#staff-section" className="text-xs uppercase tracking-wider text-gray-200 hover:text-[#c9a227] font-medium transition-colors">
+            <Link href="/our-team" className="text-xs uppercase tracking-wider text-gray-200 hover:text-[#c9a227] font-medium transition-colors">
               {lang === 'en' ? 'Staff' : 'शिक्षकहरू'}
-            </a>
+            </Link>
             <a href="#notices-section" className="text-xs uppercase tracking-wider text-gray-200 hover:text-[#c9a227] font-medium transition-colors flex items-center gap-1">
               {lang === 'en' ? 'Notices' : 'सूचना'}
               <span className="animate-pulse w-1.5 h-1.5 bg-[#c9a227] rounded-full"></span>
@@ -571,13 +573,13 @@ export default function SchoolHomePage() {
               >
                 {lang === 'en' ? 'Photo Gallery' : 'तस्वीर सङ्ग्रह'}
               </a>
-              <a 
-                href="#staff-section" 
+              <Link 
+                href="/our-team" 
                 onClick={() => setNavOpen(false)} 
                 className="text-sm font-medium tracking-wide py-2 border-b border-gray-800 text-gray-200 hover:text-[#c9a227]"
               >
                 {lang === 'en' ? 'Our Faculty Staff' : 'हाम्रो शिक्षक टोली'}
-              </a>
+              </Link>
               <a 
                 href="#notices-section" 
                 onClick={() => setNavOpen(false)} 
@@ -603,17 +605,31 @@ export default function SchoolHomePage() {
           ──────────────────────────────────────────────────────── */}
       <section 
         id="hero-container" 
-        className="relative pt-24 overflow-hidden min-h-[92vh] flex items-center bg-gradient-to-br from-[#10192e] via-[#1a2744] to-[#0a1120]"
+        className="relative pt-24 overflow-hidden min-h-[92vh] flex items-center bg-[#0d1424]"
       >
+        {/* Real school assembly background image with dimming filter for elite text contrast */}
+        <div className="absolute inset-0 z-0 animate-fade-in duration-1000">
+          <img 
+            src="/school_hero_bg.png" 
+            alt="Shree Chhatrapali School Assembly Background" 
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.3) contrast(1.15) saturate(0.9)' }}
+            referrerPolicy="no-referrer"
+          />
+          {/* Edge/overlay darkness vignette to guarantee maximum text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#10192e] via-transparent to-[#10192e]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#10192e]/85 via-[#1a2744]/40 to-transparent"></div>
+        </div>
+
         {/* Animated radial grid and particle dots layer */}
-        <div className="absolute inset-0 opacity-15" style={{
+        <div className="absolute inset-0 opacity-15 z-0" style={{
           backgroundImage: 'radial-gradient(circle, #c9a227 1px, transparent 1px)',
           backgroundSize: '24px 24px'
         }}></div>
 
         {/* Ambient warm glow lights - subtle gold & soft blue, strict NO purple */}
-        <div className="absolute top-1/4 right-[5%] w-80 h-80 rounded-full bg-[#c9a227]/10 blur-[90px]"></div>
-        <div className="absolute bottom-1/4 left-[5%] w-80 h-80 rounded-full bg-[#1a2744]/40 blur-[100px]"></div>
+        <div className="absolute top-1/4 right-[5%] w-80 h-80 rounded-full bg-[#c9a227]/10 blur-[90px] z-0"></div>
+        <div className="absolute bottom-1/4 left-[5%] w-80 h-80 rounded-full bg-[#1a2744]/40 blur-[100px] z-0"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -691,9 +707,10 @@ export default function SchoolHomePage() {
               <div className="relative mx-auto max-w-[420px] lg:max-w-none rounded-2xl border-4 border-[#c9a227]/20 p-2 overflow-hidden shadow-2xl bg-[#16213a]">
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                   <img 
-                    src="/input_file_1.png"
+                    src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop&q=80"
                     alt="Shree Chhatrapali Tirthadevi Secondary School Building"
                     className="object-cover w-full h-full transform transition-transform duration-[6000ms] group-hover:scale-110"
+                    referrerPolicy="no-referrer"
                     onError={(e) => handleFeaturedImageError(e, 1)}
                   />
                   {/* Subtle dark gradient overlay inside picture banner */}
@@ -785,9 +802,10 @@ export default function SchoolHomePage() {
               {/* Image highlight representing local school context */}
               <div className="relative rounded-xl overflow-hidden shadow-md group aspect-[16/9]">
                 <img 
-                  src="/input_file_5.png" 
+                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop&q=80" 
                   alt="Students playing on field of Shree Chhatrapali"
                   className="object-cover w-full h-full transform transition-transform duration-[4000ms] group-hover:scale-105"
+                  referrerPolicy="no-referrer"
                   onError={(e) => handleFeaturedImageError(e, 5)}
                 />
                 <div className="absolute inset-0 bg-[#1a2744]/20 flex items-center justify-center">
@@ -1088,6 +1106,7 @@ export default function SchoolHomePage() {
                     src={image.src} 
                     alt={image.titleEn}
                     className="object-cover w-full h-full transform transition-transform duration-[4000ms] group-hover:scale-105"
+                    referrerPolicy="no-referrer"
                     onError={(e) => handleFeaturedImageError(e, image.id)}
                   />
                   
@@ -1116,54 +1135,138 @@ export default function SchoolHomePage() {
       </section>
 
       {/* ────────────────────────────────────────────────────────
-          7. TEACHERS / STAFF SECTION
+          7. TEACHERS / STAFF SECTION PREVIEW
           ──────────────────────────────────────────────────────── */}
       <section 
         id="staff-section" 
-        className="py-16 md:py-24 bg-[#f9f7f2] scroll-reveal"
+        className="py-16 md:py-24 bg-gradient-to-b from-[#f9f7f2] via-white to-[#f4f1ea] scroll-reveal"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
           <div className="flex flex-col items-center text-center gap-2 mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-[#c9a227]">
-              {lang === 'en' ? 'Our Leadership & Educators' : 'शिक्षक र कर्मचारी प्रशासन'}
+              {lang === 'en' ? 'Our Pillars of Knowledge' : 'हाम्रो शैक्षिक नेतृत्व र गौरव'}
             </span>
             <h2 className="text-3xl md:text-4xl font-serif text-[#1a2744] font-semibold tracking-tight">
-              {lang === 'en' ? 'Introducing Our Dedicated Faculty Board' : 'हाम्रो दक्ष र अनुभवी शैक्षिक टोली'}
+              {lang === 'en' ? 'Meet the Minds Guiding Shree Chhatrapali' : 'भविष्य कोर्ने शिक्षक, सहयोगी र सेवानिवृत्त टोली'}
             </h2>
-            <div className="w-20 h-1 bg-[#c9a227]"></div>
+            <p className="text-gray-500 text-xs sm:text-sm max-w-xl mt-2 leading-relaxed">
+              {lang === 'en'
+                ? 'Under the administration of expert educational leaders, we offer competitive coaching accompanied by experienced subject mentors.'
+                : 'दक्ष तथा कुशल शिक्षक वर्ग र कुशल कार्यालय कर्मचारीहरूको संयुक्त प्रयासमा हामी पकडी कपिलवस्तु क्षेत्रमा शिक्षाको गुणस्तर उच्च राख्न सदैव तत्पर छौं।'}
+            </p>
+            <div className="w-20 h-1 bg-[#c9a227] mt-3"></div>
           </div>
 
-          {/* Staff Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {staffList.map((staff) => {
-              return (
-                <div 
-                  key={staff.id}
-                  className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-5"
-                >
-                  {/* Initials relative avatar circle */}
-                  <div className={`w-14 h-14 rounded-full ${staff.color || 'bg-[#1a2744]'} text-[#f9f7f2] flex items-center justify-center font-bold font-serif text-lg shadow-inner shrink-0 ring-4 ring-offset-2 ring-[#c9a227]/30`}>
-                    {staff.initials}
-                  </div>
+          {/* Core Spotlight Features (3 Key Leaders) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            {/* Leader 1 - Principal */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+              <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/5 rounded-bl-3xl"></div>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#1a2744]/10 text-[#1a2744]">
+                  {lang === 'en' ? 'Principal & Administrator' : 'प्रधानाध्यापक तथा नेतृत्व'}
+                </span>
+                <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
+                  {lang === 'en' ? 'Mr. Ram Prasad Sharma' : 'श्री राम प्रसाद शर्मा'}
+                </h3>
+                <p className="text-xs text-slate-500 font-sans mt-0.5">
+                  {lang === 'en' ? 'School Administration & Policy' : 'विद्यालय प्रशासन तथा नेतृत्व'}
+                </p>
+                <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
+                <p className="text-xs text-gray-500 leading-relaxed italic">
+                  {lang === 'en'
+                    ? '"Committing to fostering inclusive values, academic records, and secure student tracks since inception."'
+                    : '"शुरुवातदेखि नै समावेशी मूल्य मान्यता, शैक्षिक रेकर्ड र सुरक्षित विद्यार्थी ट्र्याकहरू बढाउन प्रतिबद्ध छौं।"'}
+                </p>
+              </div>
+              <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-[#c9a227] flex items-center justify-between">
+                <span>RPS • SCTS</span>
+                <span className="font-mono">principal.scts@gmail.com</span>
+              </div>
+            </div>
 
-                  <div className="flex flex-col gap-1 min-w-0">
-                    <h3 className="font-serif text-[15px] font-bold text-[#1a2744] leading-snug truncate">
-                      {lang === 'en' ? staff.nameEn : staff.nameNp}
-                    </h3>
-                    
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#c9a227]">
-                      {lang === 'en' ? staff.roleEn : staff.roleNp}
-                    </span>
+            {/* Leader 2 - Vice Coordinator */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+              <div className="absolute right-0 top-0 w-16 h-16 bg-[#1a2744]/5 rounded-bl-3xl"></div>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">
+                  {lang === 'en' ? 'Senior Lecturer' : 'वरिष्ठ माध्यमिक शिक्षक'}
+                </span>
+                <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
+                  {lang === 'en' ? 'Mrs. Sita Ghalan' : 'श्रीमती सीता घलान'}
+                </h3>
+                <p className="text-xs text-slate-500 font-sans mt-0.5">
+                  {lang === 'en' ? 'English Language & Literature' : 'अंग्रेजी भाषा तथा साहित्य'}
+                </p>
+                <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
+                <p className="text-xs text-gray-500 leading-relaxed italic">
+                  {lang === 'en'
+                    ? '"Empowering local girls and underprivileged youth to communicate with absolute confidence globally."'
+                    : '"स्थानीय बालिकाहरू र पिछडिएका युवाहरूलाई विश्वव्यापी रूपमा पूर्ण आत्मविश्वासका साथ सञ्चार गर्न सशक्त बनाउने..."'}
+                </p>
+              </div>
+              <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-emerald-700 flex items-center justify-between">
+                <span>SG • SCTS</span>
+                <span className="font-mono">sita.ghalan@gmail.com</span>
+              </div>
+            </div>
 
-                    <p className="text-xs text-gray-500 font-sans border-t border-gray-100 pt-1 mt-1 leading-snug truncate">
-                      {lang === 'en' ? staff.subjectEn : staff.subjectNp}
-                    </p>
-                  </div>
+            {/* Leader 3 - Honored Retired Legend */}
+            <div className="bg-white rounded-2xl border-2 border-dashed border-[#c9a227]/30 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+              <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/10 rounded-bl-3xl"></div>
+              <div>
+                <div className="flex items-center gap-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-[#c9a227]">
+                    {lang === 'en' ? 'Honored Veteran Founder' : 'परम आदरणीय संस्थापक'}
+                  </span>
+                  <span className="text-xs">🏆</span>
                 </div>
-              );
-            })}
+                <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
+                  {lang === 'en' ? 'Mr. Dev Narayan Yadav' : 'श्री देव नारायण यादव'}
+                </h3>
+                <p className="text-xs text-amber-700 font-sans mt-0.5 font-bold">
+                  {lang === 'en' ? 'Former Principal — Legacy Advisor' : 'पूर्व प्रधानाध्यापक — अनवरत सल्लाहकार'}
+                </p>
+                <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
+                <p className="text-xs text-gray-500 leading-relaxed italic">
+                  {lang === 'en'
+                    ? '"SCTS owes its legendary 35+ years foundation to his structural blueprints and heart-led public service efforts."'
+                    : '"३ दशक लामो योगदान र उत्कृष्ट सामुदायिक चेतनाका मुख्य उत्प्रेरक व्यक्तित्व। हामी उहाँको नीतिप्रति कृतज्ञ छौं।"'}
+                </p>
+              </div>
+              <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-[#c9a227] flex items-center justify-between">
+                <span>LEGACY LEAD</span>
+                <span className="font-mono">devnarayan@gmail.com</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* BEAUTIFUL LUXURY CTA BOX POINTING TO NEW ANIMATED TEAM PAGE */}
+          <div className="mt-12 text-center bg-gradient-to-r from-[#10192e] via-[#16213a] to-[#0a101d] rounded-2xl p-6 sm:p-8 border border-[#c9a227]/30 shadow-xl max-w-4xl mx-auto text-white overflow-hidden relative">
+            <div className="absolute -right-16 -bottom-16 w-44 h-44 rounded-full bg-[#c9a227]/10 blur-[40px]"></div>
+            <div className="absolute -left-12 -top-12 w-32 h-32 rounded-full bg-[#112240]/40 blur-[30px]"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-xl sm:text-2xl font-serif text-[#c9a227] font-semibold mb-2">
+                {lang === 'en' ? 'Explore Complete 13+ Staff & Retired Teachers' : 'सम्पूर्ण १३+ शिक्षक, कर्मचारी तथा पूर्व शिक्षक सङ्ग्रह'}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 font-light mb-6 max-w-2xl mx-auto">
+                {lang === 'en' 
+                  ? 'We have launched our dynamic and interactive staff portal! Click below to view administrative desks, teachers, support staff, and historic educators with smooth left-to-right animated transitions.'
+                  : 'हाम्रो नयाँ डिजिटल शिक्षक शैक्षिक प्रोफाइल विवरण अनलाइन भएको छ। बायाँ तथा दायाँबाट सहजै सर्दै आउने जादुमयी आधुनिक एनिमेसन र फिल्टर सुविधाहरू भएको पेज हेर्नुहोस्।'}
+              </p>
+              <Link 
+                href="/our-team" 
+                className="inline-flex items-center gap-2 bg-[#c9a227] hover:bg-[#b08c20] text-white text-xs font-bold tracking-widest uppercase px-6 py-3 rounded-full shadow-lg transition-transform hover:scale-105"
+              >
+                <span>{lang === 'en' ? 'Meet All Teachers & Staff Portal' : 'शिक्षक सङ्ग्रह र सेवानिवृत्त कोठा प्रस्थान गर्नुहोस्'}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
 
         </div>
@@ -1515,7 +1618,7 @@ export default function SchoolHomePage() {
                 <a href="#programs-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Programs' : 'कार्यक्रम'}</a>
                 <a href="#facilities-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Facilities' : 'सुविधाहरू'}</a>
                 <a href="#gallery-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Gallery' : 'तस्वीरहरू'}</a>
-                <a href="#staff-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Staff' : 'शिक्षकहरू'}</a>
+                <Link href="/our-team" className="hover:text-[#c9a227] text-white transition-colors">{lang === 'en' ? 'Staff ↗' : 'शिक्षकहरू ↗'}</Link>
                 <a href="#notices-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Notices' : 'सूचना'}</a>
                 <a href="#contact-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Contact' : 'सम्पर्क'}</a>
               </div>
@@ -1621,6 +1724,7 @@ export default function SchoolHomePage() {
                 src={galleryImages[lightboxIndex].src} 
                 alt={galleryImages[lightboxIndex].titleEn}
                 className="max-h-[70vh] object-contain w-full select-none"
+                referrerPolicy="no-referrer"
                 onError={(e) => handleFeaturedImageError(e, galleryImages[lightboxIndex].id)}
               />
             </div>
