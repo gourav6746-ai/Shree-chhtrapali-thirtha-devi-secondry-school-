@@ -1,0 +1,6 @@
+{
+  "name": "Shree Chhatrapali Tirthadevi Secondary School",
+  "description": "Official bilingual (English + Nepali) website of Shree Chhatrapali Tirthadevi Secondary School, Kapilvastu, Nepal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
