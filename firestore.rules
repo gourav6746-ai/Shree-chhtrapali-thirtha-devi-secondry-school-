@@ -1,0 +1,213 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default Catch-all Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Core Primitive Identification Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isEmailVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isBootstrappedAdmin() {
+      return isSignedIn() && isEmailVerified() && request.auth.token.email == "gourav6746@gmail.com";
+    }
+
+    function getAdminData() {
+      return get(/databases/$(database)/documents/admins/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return isBootstrappedAdmin() || (
+        isSignedIn() && 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) && 
+        getAdminData().role == "admin"
+      );
+    }
+
+    function isEditor() {
+      return isBootstrappedAdmin() || (
+        isSignedIn() && 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) && 
+        (getAdminData().role == "admin" || getAdminData().role == "editor")
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches("^[a-zA-Z0-9_\\-]+$");
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Entity Schema Validators
+    function isValidTeamMember(data) {
+      return data.keys().hasAll(["id", "category", "nameEn", "nameNp", "roleEn", "roleNp", "order"]) &&
+        data.id is string && isValidId(data.id) &&
+        data.category is string && (data.category == "admin" || data.category == "faculty" || data.category == "support" || data.category == "retired") &&
+        data.nameEn is string && data.nameEn.size() >= 2 && data.nameEn.size() <= 200 &&
+        data.nameNp is string && data.nameNp.size() >= 2 && data.nameNp.size() <= 200 &&
+        data.roleEn is string && data.roleEn.size() >= 2 && data.roleEn.size() <= 200 &&
+        data.roleNp is string && data.roleNp.size() >= 2 && data.roleNp.size() <= 200 &&
+        data.order is int && 
+        (data.email == null || (data.email is string && data.email.size() <= 100)) &&
+        (data.image == null || (data.image is string && data.image.size() <= 1000)) &&
+        (data.color == null || (data.color is string && data.color.size() <= 100)) &&
+        (data.subjectEn == null || (data.subjectEn is string && data.subjectEn.size() <= 300)) &&
+        (data.subjectNp == null || (data.subjectNp is string && data.subjectNp.size() <= 300)) &&
+        (data.experienceEn == null || (data.experienceEn is string && data.experienceEn.size() <= 300)) &&
+        (data.experienceNp == null || (data.experienceNp is string && data.experienceNp.size() <= 300));
+    }
+
+    function isValidNotice(data) {
+      return data.keys().hasAll(["id", "titleEn", "titleNp", "descEn", "descNp", "dateEn", "dateNp", "isNew"]) &&
+        data.id is string && isValidId(data.id) &&
+        data.titleEn is string && data.titleEn.size() >= 2 && data.titleEn.size() <= 300 &&
+        data.titleNp is string && data.titleNp.size() >= 2 && data.titleNp.size() <= 300 &&
+        data.descEn is string && data.descEn.size() >= 2 && data.descEn.size() <= 2000 &&
+        data.descNp is string && data.descNp.size() >= 2 && data.descNp.size() <= 2000 &&
+        data.dateEn is string && data.dateEn.size() <= 100 &&
+        data.dateNp is string && data.dateNp.size() <= 100 &&
+        data.isNew is bool;
+    }
+
+    function isValidNews(data) {
+      return data.keys().hasAll(["id", "titleEn", "titleNp", "descEn", "descNp", "type"]) &&
+        data.id is string && isValidId(data.id) &&
+        data.titleEn is string && data.titleEn.size() >= 2 && data.titleEn.size() <= 300 &&
+        data.titleNp is string && data.titleNp.size() >= 2 && data.titleNp.size() <= 300 &&
+        data.descEn is string && data.descEn.size() >= 2 && data.descEn.size() <= 10000 &&
+        data.descNp is string && data.descNp.size() >= 2 && data.descNp.size() <= 10000 &&
+        data.type is string && (data.type == "news" || data.type == "event") &&
+        (data.image == null || (data.image is string && data.image.size() <= 1000)) &&
+        (data.dateEn == null || (data.dateEn is string && data.dateEn.size() <= 100)) &&
+        (data.dateNp == null || (data.dateNp is string && data.dateNp.size() <= 100));
+    }
+
+    function isValidGalleryImage(data) {
+      return data.keys().hasAll(["id", "src", "titleEn", "titleNp"]) &&
+        data.id is string && isValidId(data.id) &&
+        data.src is string && data.src.size() >= 5 && data.src.size() <= 1000 &&
+        data.titleEn is string && data.titleEn.size() >= 2 && data.titleEn.size() <= 300 &&
+        data.titleNp is string && data.titleNp.size() >= 2 && data.titleNp.size() <= 300 &&
+        (data.descEn == null || (data.descEn is string && data.descEn.size() <= 1000)) &&
+        (data.descNp == null || (data.descNp is string && data.descNp.size() <= 1000)) &&
+        (data.order == null || data.order is int);
+    }
+
+    function isValidAchievement(data) {
+      return data.keys().hasAll(["id", "titleEn", "titleNp", "value"]) &&
+        data.id is string && isValidId(data.id) &&
+        data.titleEn is string && data.titleEn.size() >= 2 && data.titleEn.size() <= 300 &&
+        data.titleNp is string && data.titleNp.size() >= 2 && data.titleNp.size() <= 300 &&
+        data.value is string && data.value.size() >= 1 && data.value.size() <= 50 &&
+        (data.descEn == null || (data.descEn is string && data.descEn.size() <= 1000)) &&
+        (data.descNp == null || (data.descNp is string && data.descNp.size() <= 1000)) &&
+        (data.icon == null || (data.icon is string && data.icon.size() <= 100)) &&
+        (data.order == null || data.order is int);
+    }
+
+    function isValidContactInfo(data) {
+      return data.keys().hasAll(["id", "phone1", "email", "addressEn", "addressNp"]) &&
+        data.id == "main" &&
+        data.phone1 is string && data.phone1.size() >= 5 && data.phone1.size() <= 50 &&
+        data.email is string && data.email.size() >= 5 && data.email.size() <= 100 &&
+        data.addressEn is string && data.addressEn.size() >= 5 && data.addressEn.size() <= 200 &&
+        data.addressNp is string && data.addressNp.size() >= 5 && data.addressNp.size() <= 200 &&
+        (data.phone2 == null || (data.phone2 is string && data.phone2.size() <= 50)) &&
+        (data.facebookUrl == null || (data.facebookUrl is string && data.facebookUrl.size() <= 300)) &&
+        (data.youtubeUrl == null || (data.youtubeUrl is string && data.youtubeUrl.size() <= 300)) &&
+        (data.twitterUrl == null || (data.twitterUrl is string && data.twitterUrl.size() <= 300));
+    }
+
+    function isValidHomepageContent(data) {
+      return data.id == "hero" &&
+        (data.welcomeTitleEn == null || (data.welcomeTitleEn is string && data.welcomeTitleEn.size() <= 500)) &&
+        (data.welcomeTitleNp == null || (data.welcomeTitleNp is string && data.welcomeTitleNp.size() <= 500)) &&
+        (data.welcomeSubtitleEn == null || (data.welcomeSubtitleEn is string && data.welcomeSubtitleEn.size() <= 1000)) &&
+        (data.welcomeSubtitleNp == null || (data.welcomeSubtitleNp is string && data.welcomeSubtitleNp.size() <= 1000)) &&
+        (data.principalQuoteEn == null || (data.principalQuoteEn is string && data.principalQuoteEn.size() <= 5000)) &&
+        (data.principalQuoteNp == null || (data.principalQuoteNp is string && data.principalQuoteNp.size() <= 5000)) &&
+        (data.principalNameEn == null || (data.principalNameEn is string && data.principalNameEn.size() <= 200)) &&
+        (data.principalNameNp == null || (data.principalNameNp is string && data.principalNameNp.size() <= 200)) &&
+        (data.welcomeIntroductionEn == null || (data.welcomeIntroductionEn is string && data.welcomeIntroductionEn.size() <= 10000)) &&
+        (data.welcomeIntroductionNp == null || (data.welcomeIntroductionNp is string && data.welcomeIntroductionNp.size() <= 10000));
+    }
+
+    function isValidAdminRole(data) {
+      return data.keys().hasAll(["uid", "email", "role"]) &&
+        data.uid is string && isValidId(data.uid) &&
+        data.email is string && data.email.size() >= 5 && data.email.size() <= 100 &&
+        data.role is string && (data.role == "admin" || data.role == "editor");
+    }
+
+    // Document Access Rules
+    match /team_members/{id} {
+      allow read: if true;
+      allow create: if isEditor() && isValidId(id) && id == incoming().id && isValidTeamMember(incoming());
+      allow update: if isEditor() && isValidId(id) && id == incoming().id && isValidTeamMember(incoming());
+      allow delete: if isEditor() && isValidId(id);
+    }
+
+    match /news_and_events/{id} {
+      allow read: if true;
+      allow create: if isEditor() && isValidId(id) && id == incoming().id && isValidNews(incoming());
+      allow update: if isEditor() && isValidId(id) && id == incoming().id && isValidNews(incoming());
+      allow delete: if isEditor() && isValidId(id);
+    }
+
+    match /notices/{id} {
+      allow read: if true;
+      allow create: if isEditor() && isValidId(id) && id == incoming().id && isValidNotice(incoming());
+      allow update: if isEditor() && isValidId(id) && id == incoming().id && isValidNotice(incoming());
+      allow delete: if isEditor() && isValidId(id);
+    }
+
+    match /gallery_images/{id} {
+      allow read: if true;
+      allow create: if isEditor() && isValidId(id) && id == incoming().id && isValidGalleryImage(incoming());
+      allow update: if isEditor() && isValidId(id) && id == incoming().id && isValidGalleryImage(incoming());
+      allow delete: if isEditor() && isValidId(id);
+    }
+
+    match /achievements/{id} {
+      allow read: if true;
+      allow create: if isEditor() && isValidId(id) && id == incoming().id && isValidAchievement(incoming());
+      allow update: if isEditor() && isValidId(id) && id == incoming().id && isValidAchievement(incoming());
+      allow delete: if isEditor() && isValidId(id);
+    }
+
+    match /contact_configurations/{id} {
+      allow read: if true;
+      allow create, update: if isEditor() && id == "main" && isValidContactInfo(incoming());
+      allow delete: if false;
+    }
+
+    match /homepage_configurations/{id} {
+      allow read: if true;
+      allow create, update: if isEditor() && id == "hero" && isValidHomepageContent(incoming());
+      allow delete: if false;
+    }
+
+    match /admins/{id} {
+      allow read: if isAdmin();
+      allow create: if isAdmin() && isValidId(id) && id == incoming().uid && isValidAdminRole(incoming());
+      allow update: if isAdmin() && isValidId(id) && id == incoming().uid && isValidAdminRole(incoming()) && (
+        incoming().uid == existing().uid && incoming().email == existing().email
+      );
+      allow delete: if isAdmin() && isValidId(id) && id != request.auth.uid;
+    }
+  }
+}

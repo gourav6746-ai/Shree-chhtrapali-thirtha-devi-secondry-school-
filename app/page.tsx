@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { db } from '../lib/firebase';
+import { collection, onSnapshot, doc } from 'firebase/firestore';
 import { 
   BookOpen, 
   Award, 
@@ -433,6 +435,78 @@ export default function SchoolHomePage() {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  // Dynamic Firestore-backed state variables with pre-compiled static fallbacks
+  const [dynamicNotices, setDynamicNotices] = useState<any[]>(noticesList);
+  const [dynamicGallery, setDynamicGallery] = useState<any[]>(galleryImages);
+  const [dynamicContact, setDynamicContact] = useState({
+    phone1: '+977-76-691017',
+    phone2: '',
+    email: 'info.chhatrapali@gmail.com',
+    addressEn: 'Mayadevi-1, Pakadi, Kapilvastu, Nepal',
+    addressNp: 'मायादेवी-१, पकडी, कपिलवस्तु, नेपाल',
+    facebookUrl: 'https://facebook.com',
+    youtubeUrl: 'https://youtube.com',
+    twitterUrl: 'https://twitter.com'
+  });
+  const [dynamicHero, setDynamicHero] = useState({
+    welcomeTitleEn: 'Shree Chhatrapali Tirthadevi Secondary School',
+    welcomeTitleNp: 'श्री छत्रपाली तीर्थादेवी माध्यमिक विद्यालय',
+    welcomeSubtitleEn: 'Empowering generations through transformative education, structural character-building, and localized societal welfare.',
+    welcomeSubtitleNp: 'गुणस्तरीय शिक्षा, व्यावहारिक ज्ञान र अनुशासित जीवन शैली सहित विद्यार्थीहरूको उज्ज्वल भविष्य निर्माण गर्न कटिबद्ध।',
+    principalQuoteEn: 'Education is the key to unlocking the true potential of our students and fostering regional excellence.',
+    principalQuoteNp: 'गुणस्तरीय शिक्षाले नै हाम्रा विद्यार्थीहरूको साँचो क्षमता उजागर गर्न र क्षेत्रीय उत्कृष्टताको विकास गर्न मद्दत पुग्दछ।',
+    principalNameEn: 'Mr. Ram Prasad Sharma',
+    principalNameNp: 'श्री राम प्रसाद शर्मा',
+    welcomeIntroductionEn: 'Our secondary school stands as an educational beacon in Pakadi, Kapilvastu, dedicated to modern standards.',
+    welcomeIntroductionNp: 'पकडी, कपिलवस्तु अवस्थित यस श्री छत्रपाली तीर्थादेवी माध्यमिक विद्यालयले आफ्ना विद्यार्थीहरूलाई समयसापेक्ष उत्कृष्ट शिक्षा प्रदान गर्दै आइरहेको छ।'
+  });
+
+  // Establish Firestore dynamic listeners
+  useEffect(() => {
+    // 1. Notices Subscription
+    const unsubNotices = onSnapshot(collection(db, 'notices'), (snap) => {
+      if (!snap.empty) {
+        const items = snap.docs.map(doc => doc.data());
+        setDynamicNotices(items);
+      } else {
+        setDynamicNotices(noticesList);
+      }
+    }, (err) => console.warn("Firestore collection 'notices' read error, falling back to static:", err));
+
+    // 2. Gallery Images Subscription
+    const unsubGallery = onSnapshot(collection(db, 'gallery_images'), (snap) => {
+      if (!snap.empty) {
+        const sorted = snap.docs.map(doc => doc.data()).sort((a, b) => (a.order || 0) - (b.order || 0));
+        setDynamicGallery(sorted);
+      } else {
+        setDynamicGallery(galleryImages);
+      }
+    }, (err) => console.warn("Firestore collection 'gallery_images' read error, falling back to static:", err));
+
+    // 3. Contact Configurations Subscription
+    const unsubContact = onSnapshot(doc(db, 'contact_configurations', 'main'), (snap) => {
+      if (snap.exists()) {
+        const data = snap.data();
+        setDynamicContact(prev => ({ ...prev, ...data }));
+      }
+    }, (err) => console.warn("Firestore doc 'contact_configurations/main' read error:", err));
+
+    // 4. Homepage Configurations Subscription
+    const unsubHero = onSnapshot(doc(db, 'homepage_configurations', 'hero'), (snap) => {
+      if (snap.exists()) {
+        const data = snap.data();
+        setDynamicHero(prev => ({ ...prev, ...data }));
+      }
+    }, (err) => console.warn("Firestore doc 'homepage_configurations/hero' read error:", err));
+
+    return () => {
+      unsubNotices();
+      unsubGallery();
+      unsubContact();
+      unsubHero();
+    };
+  }, []);
+
   // Monitor Scroll for Navbar Shrink Effect
   useEffect(() => {
     const handleScroll = () => {
@@ -475,13 +549,13 @@ export default function SchoolHomePage() {
 
   const handleNextPhoto = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % galleryImages.length);
+      setLightboxIndex((lightboxIndex + 1) % dynamicGallery.length);
     }
   };
 
   const handlePrevPhoto = () => {
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length);
+      setLightboxIndex((lightboxIndex - 1 + dynamicGallery.length) % dynamicGallery.length);
     }
   };
 
@@ -1190,7 +1264,7 @@ export default function SchoolHomePage() {
 
           {/* Masonry/Grid of images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {galleryImages.map((image, index) => {
+            {dynamicGallery.map((image, index) => {
               return (
                 <div 
                   key={image.id}
@@ -1419,7 +1493,7 @@ export default function SchoolHomePage() {
 
             {/* Right side: List of notices */}
             <div className="lg:col-span-8 flex flex-col gap-6">
-              {noticesList.map((notice) => {
+              {dynamicNotices.map((notice) => {
                 return (
                   <div 
                     key={notice.id}
@@ -1784,7 +1858,7 @@ export default function SchoolHomePage() {
                 {lang === 'en' ? 'SCTS Photo Viewer' : 'छत्रपाली रमाइलो तस्वीर सञ्जाल'}
               </span>
               <span className="text-xs uppercase text-gray-400 mt-0.5">
-                {lightboxIndex + 1} / {galleryImages.length}
+                {lightboxIndex + 1} / {dynamicGallery.length}
               </span>
             </div>
             
@@ -1816,11 +1890,11 @@ export default function SchoolHomePage() {
               onClick={(e) => e.stopPropagation()}
             >
               <img 
-                src={galleryImages[lightboxIndex].src} 
-                alt={galleryImages[lightboxIndex].titleEn}
+                src={dynamicGallery[lightboxIndex].src} 
+                alt={dynamicGallery[lightboxIndex].titleEn}
                 className="max-h-[70vh] object-contain w-full select-none"
                 referrerPolicy="no-referrer"
-                onError={(e) => handleFeaturedImageError(e, galleryImages[lightboxIndex].id)}
+                onError={(e) => handleFeaturedImageError(e, dynamicGallery[lightboxIndex].id)}
               />
             </div>
 
@@ -1842,10 +1916,10 @@ export default function SchoolHomePage() {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="font-serif text-base sm:text-lg font-bold text-[#c9a227]">
-              {lang === 'en' ? galleryImages[lightboxIndex].titleEn : galleryImages[lightboxIndex].titleNp}
+              {lang === 'en' ? dynamicGallery[lightboxIndex].titleEn : dynamicGallery[lightboxIndex].titleNp}
             </h3>
             <p className="text-xs text-gray-300 mt-2 leading-relaxed">
-              {lang === 'en' ? galleryImages[lightboxIndex].descEn : galleryImages[lightboxIndex].descNp}
+              {lang === 'en' ? dynamicGallery[lightboxIndex].descEn : dynamicGallery[lightboxIndex].descNp}
             </p>
             
             {/* Mobile swipe touch indicator guidelines */}

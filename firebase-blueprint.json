@@ -1,0 +1,173 @@
+{
+  "entities": {
+    "TeamMember": {
+      "title": "TeamMember",
+      "description": "School educational leadership, teachers, administrative, and support staff.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of the team member." },
+        "category": { "type": "string", "enum": ["admin", "faculty", "support", "retired"], "description": "Type of team or staff category." },
+        "nameEn": { "type": "string", "description": "Full name in English." },
+        "nameNp": { "type": "string", "description": "Full name in Nepali." },
+        "roleEn": { "type": "string", "description": "Job title/role in English." },
+        "roleNp": { "type": "string", "description": "Job title/role in Nepali." },
+        "subjectEn": { "type": "string", "description": "Subject or administrative responsibility in English." },
+        "subjectNp": { "type": "string", "description": "Subject or administrative responsibility in Nepali." },
+        "experienceEn": { "type": "string", "description": "Pedagogy or general experience in English." },
+        "experienceNp": { "type": "string", "description": "Pedagogy or general experience in Nepali." },
+        "email": { "type": "string", "format": "email", "description": "Professional email address." },
+        "image": { "type": "string", "description": "Profile picture URL." },
+        "color": { "type": "string", "description": "UI accent color or border class." },
+        "order": { "type": "integer", "description": "Sort order placement in lists." }
+      },
+      "required": ["id", "category", "nameEn", "nameNp", "roleEn", "roleNp", "order"]
+    },
+    "NewsAndEvents": {
+      "title": "NewsAndEvents",
+      "description": "Important school news articles, extracurricular activity announcements, and events.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for news post." },
+        "titleEn": { "type": "string", "description": "News title in English." },
+        "titleNp": { "type": "string", "description": "News title in Nepali." },
+        "descEn": { "type": "string", "description": "News description or full post body in English." },
+        "descNp": { "type": "string", "description": "News description or full post body in Nepali." },
+        "dateEn": { "type": "string", "description": "Date formatted in English." },
+        "dateNp": { "type": "string", "description": "Date formatted in Nepali (e.g. BS calendar)." },
+        "image": { "type": "string", "description": "Banner or featured photo URL." },
+        "type": { "type": "string", "enum": ["news", "event"], "description": "Categorization of entry." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Database timestamp." }
+      },
+      "required": ["id", "titleEn", "titleNp", "descEn", "descNp", "type"]
+    },
+    "Notice": {
+      "title": "Notice",
+      "description": "Administrative notice board items, admission announcements, schedule changes, or holidays.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique id for notice tracker." },
+        "titleEn": { "type": "string", "description": "Notice title in English." },
+        "titleNp": { "type": "string", "description": "Notice title in Nepali." },
+        "descEn": { "type": "string", "description": "Notice brief explanation in English." },
+        "descNp": { "type": "string", "description": "Notice brief explanation in Nepali." },
+        "dateEn": { "type": "string", "description": "Date formatted in English metadata." },
+        "dateNp": { "type": "string", "description": "Date formatted in Nepali metadata." },
+        "isNew": { "type": "boolean", "description": "Flag to display bright highlight badging." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "titleEn", "titleNp", "descEn", "descNp", "dateEn", "dateNp", "isNew"]
+    },
+    "GalleryImage": {
+      "title": "GalleryImage",
+      "description": "Authentic photograph item displaying assemblies, campuses, awards, or student moments.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "src": { "type": "string", "description": "Source image URL or cloud storage path." },
+        "titleEn": { "type": "string" },
+        "titleNp": { "type": "string" },
+        "descEn": { "type": "string" },
+        "descNp": { "type": "string" },
+        "order": { "type": "integer" }
+      },
+      "required": ["id", "src", "titleEn", "titleNp"]
+    },
+    "Achievement": {
+      "title": "Achievement",
+      "description": "Key milestone statistics, achievements, or highlights of the school.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titleEn": { "type": "string", "description": "Achievement title in English." },
+        "titleNp": { "type": "string", "description": "Achievement title in Nepali." },
+        "descEn": { "type": "string" },
+        "descNp": { "type": "string" },
+        "value": { "type": "string", "description": "Numerical or summary metric (e.g. 100%, 500+, 30+)." },
+        "icon": { "type": "string", "description": "Lucide icon string name." },
+        "order": { "type": "integer" }
+      },
+      "required": ["id", "titleEn", "titleNp", "value"]
+    },
+    "ContactInfo": {
+      "title": "ContactInfo",
+      "description": "Singleton configuration for school communication info, phone registries, and emails.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phone1": { "type": "string" },
+        "phone2": { "type": "string" },
+        "email": { "type": "string" },
+        "addressEn": { "type": "string" },
+        "addressNp": { "type": "string" },
+        "facebookUrl": { "type": "string" },
+        "youtubeUrl": { "type": "string" },
+        "twitterUrl": { "type": "string" }
+      },
+      "required": ["id", "phone1", "email", "addressEn", "addressNp"]
+    },
+    "HomepageContent": {
+      "title": "HomepageContent",
+      "description": "Customizable homepage segments, headlines, sub-headers, principal welcome message etc.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "welcomeTitleEn": { "type": "string" },
+        "welcomeTitleNp": { "type": "string" },
+        "welcomeSubtitleEn": { "type": "string" },
+        "welcomeSubtitleNp": { "type": "string" },
+        "principalQuoteEn": { "type": "string" },
+        "principalQuoteNp": { "type": "string" },
+        "principalNameEn": { "type": "string" },
+        "principalNameNp": { "type": "string" },
+        "welcomeIntroductionEn": { "type": "string" },
+        "welcomeIntroductionNp": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "AdminRole": {
+      "title": "AdminRole",
+      "description": "Users authorized to access the backoffice editor and admin dashboard panels.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "editor"] }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/team_members/{id}": {
+      "schema": "TeamMember",
+      "description": "Collection of teachers and administrative assets."
+    },
+    "/news_and_events/{id}": {
+      "schema": "NewsAndEvents",
+      "description": "Collection of news reports and activity timelines."
+    },
+    "/notices/{id}": {
+      "schema": "Notice",
+      "description": "Notices and holiday logs on noticeboard."
+    },
+    "/gallery_images/{id}": {
+      "schema": "GalleryImage",
+      "description": "Photogallery slide pictures."
+    },
+    "/achievements/{id}": {
+      "schema": "Achievement",
+      "description": "School key numbers and metrics."
+    },
+    "/contact_configurations/{id}": {
+      "schema": "ContactInfo",
+      "description": "Singleton storing phone lines and socials."
+    },
+    "/homepage_configurations/{id}": {
+      "schema": "HomepageContent",
+      "description": "Singleton storing welcome message parameters."
+    },
+    "/admins/{id}": {
+      "schema": "AdminRole",
+      "description": "List of emails with authorized keys and credentials."
+    }
+  }
+}
