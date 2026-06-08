@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { db } from '../../lib/firebase';
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, Globe, Search, Award, HelpCircle, Phone, Mail, Sparkles, BookOpen } from 'lucide-react';
 
@@ -293,19 +291,6 @@ export default function OurTeamPage() {
   });
   const [activeTab, setActiveTab] = useState<'all' | 'admin' | 'faculty' | 'support' | 'retired'>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [team, setTeam] = useState<any[]>(completeTeam);
-
-  useEffect(() => {
-    const qTeam = query(collection(db, 'team_members'), orderBy('order', 'asc'));
-    const unsubscribe = onSnapshot(qTeam, (snap) => {
-      if (!snap.empty) {
-        setTeam(snap.docs.map(doc => doc.data()));
-      } else {
-        setTeam(completeTeam);
-      }
-    }, (err) => console.warn("Firestore collection 'team_members' read error:", err));
-    return () => unsubscribe();
-  }, []);
 
   const toggleLang = (target: 'en' | 'np') => {
     setLang(target);
@@ -313,7 +298,7 @@ export default function OurTeamPage() {
   };
 
   // Filter & Search Logic
-  const filteredTeam = team.filter(member => {
+  const filteredTeam = completeTeam.filter(member => {
     const matchesTab = activeTab === 'all' || member.category === activeTab;
     const nameMatch = (member.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) || 
                        member.nameNp.includes(searchQuery));

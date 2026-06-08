@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { db } from '../lib/firebase';
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { 
   BookOpen, 
   Award, 
@@ -376,6 +374,48 @@ const staffList = [
 ];
 
 // Notice board items with Nepali dates (BS Calendar)
+const noticesList = [
+  {
+    id: 1,
+    titleEn: 'Admission Open for 2081-82 Academic Session',
+    titleNp: 'शैक्षिक सत्र २०८१-८२ को लागि नयाँ विद्यार्थी भर्ना खुल्यो!',
+    descEn: 'Admissions are officially open for Primary, Secondary (Grade 6-9), and Plus Two Management & Education faculties. Please collect registration forms from the admin office.',
+    descNp: 'प्राथमिक तह, माध्यमिक तह (कक्षा ६-९) र कक्षा ११ व्यवस्थापन तथा शिक्षा संकाय दुवैमा शैक्षिक सत्र २०८१-८१ का लागि फारम वितरण सुरु भएको छ। समयमै भर्ना आरक्षित गराउनुहोला।',
+    dateEn: 'Falgun 15, 2081 BS',
+    dateNp: '१५ फागुन २०८१',
+    isNew: true,
+  },
+  {
+    id: 2,
+    titleEn: 'Plus Two National board (+2) Result Published',
+    titleNp: 'कक्षा १२ (+२) संकायको गौरवमय नतिजा प्रकाशन सम्बन्धमा',
+    descEn: 'The National Examination Board (NEB) class 12 results are published. All students can check their marksheets at the school administrative counter.',
+    descNp: 'व्यवस्थापन तथा शिक्षा संकाय अन्तर्गत परीक्षाको अन्तिम ग्रेड-सिट र परीक्षाफल विवरण प्रकाशन भएको छ। आफ्नो मार्कसिट विवरण प्रशासकीय कक्षमा बुझ्न सूचित गरिन्छ।',
+    dateEn: 'Magh 28, 2081 BS',
+    dateNp: '२८ माघ २०८१',
+    isNew: false,
+  },
+  {
+    id: 3,
+    titleEn: 'Annual Sports Day & Extracurricular Carnival',
+    titleNp: 'वार्षिक खेलकुद सप्ताह - भव्य आयोजना चैत १५ गते',
+    descEn: 'The most anticipated school sports carnival is scheduled from Chaitra 15, featuring competitive football, volleyball, high-jump, and athletic tournaments.',
+    descNp: 'छात्र-छात्राको सर्वाङ्गीण विकासका लागि वार्षिक खेलकुद हप्ता चैत १५ देखि सुरु हुनेछ। इच्छुक प्रतिस्पर्धी विद्यार्थीले आफ्नो नाम खेल शिक्षक रमेश पोखरेललाई दर्ता गराउनुहोला।',
+    dateEn: 'Magh 10, 2081 BS',
+    dateNp: '१० माघ २०८१',
+    isNew: false,
+  },
+  {
+    id: 4,
+    titleEn: 'Merit & Need-Based Scholarship Form Deadline',
+    titleNp: 'जेहेन्दार तथा लक्षित छात्रवृत्ति आवेदन फारम बुझाउने मिति',
+    descEn: 'Eligible underprivileged, female, and meritorious students must submit their complete documentation for full fee waivers by Falgun 30 explicitly.',
+    descNp: 'गरिब, अल्पसंख्यक, अपाङ्गता भएका र शैक्षिक रूपमा उत्कृष्ट विद्यार्थीले विशेष छात्रवृत्तिका लागि बुझाउनुपर्ने सिफारिस तथा कागजातहरू फागुन ३० गतेभित्र बुझाउनुहोला।',
+    dateEn: 'Poush 25, 2081 BS',
+    dateNp: '२५ पुस २०८१',
+    isNew: false,
+  },
+];
 
 export default function SchoolHomePage() {
   const [lang, setLang] = useState<Language>('en');
@@ -383,7 +423,6 @@ export default function SchoolHomePage() {
   const [isShrunk, setIsShrunk] = useState(false);
   const [activeTab, setActiveTab] = useState('all');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [noticesList, setNoticesList] = useState<any[]>([]);
   
   // Form submission state
   const [formState, setFormState] = useState({
@@ -423,16 +462,6 @@ export default function SchoolHomePage() {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, [lang]); // Trigger fresh observer on language translation switch
-
-  // Firestore se live notices fetch karo
-  useEffect(() => {
-    const q = query(collection(db, 'notices'), orderBy('date', 'desc'));
-    const unsub = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setNoticesList(data);
-    });
-    return () => unsub();
-  }, []);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -657,7 +686,7 @@ export default function SchoolHomePage() {
               <a 
                 href="#contact-section" 
                 onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 border-b border-gray-800 text-gray-200 hover:text-[#c9a227]"
+                className="text-sm font-medium tracking-wide py-2 text-gray-200 hover:text-[#c9a227]"
               >
                 {lang === 'en' ? 'Contact Directory' : 'सम्पर्क ठेगाना'}
               </a>
@@ -1390,11 +1419,6 @@ export default function SchoolHomePage() {
 
             {/* Right side: List of notices */}
             <div className="lg:col-span-8 flex flex-col gap-6">
-              {noticesList.length === 0 && (
-                <div className="text-center py-12 text-gray-400 text-sm">
-                  {lang === 'en' ? 'No notices published yet.' : 'अहिलेसम्म कुनै सूचना प्रकाशन भएको छैन।'}
-                </div>
-              )}
               {noticesList.map((notice) => {
                 return (
                   <div 
@@ -1414,17 +1438,17 @@ export default function SchoolHomePage() {
                     <div className="px-4 py-3 bg-[#1a2744]/10 rounded-lg text-[#1a2744] flex flex-col items-center justify-center shrink-0 min-w-[100px] border border-gray-100">
                       <Calendar className="w-4 h-4 text-[#1a2744] mb-1" />
                       <span className="text-[10px] font-bold uppercase tracking-widest text-center">
-                        {notice.date || '—'}
+                        {lang === 'en' ? notice.dateEn : notice.dateNp}
                       </span>
                     </div>
 
                     {/* Description Details */}
                     <div className="flex flex-col gap-1.5 md:pt-1">
                       <h3 className="font-serif text-base md:text-lg font-bold text-[#1a2744] leading-snug">
-                        {lang === 'en' ? (notice.titleEn || notice.titleNp) : (notice.titleNp || notice.titleEn)}
+                        {lang === 'en' ? notice.titleEn : notice.titleNp}
                       </h3>
                       <p className="text-xs text-gray-500 leading-relaxed">
-                        {lang === 'en' ? (notice.descEn || notice.descNp) : (notice.descNp || notice.descEn)}
+                        {lang === 'en' ? notice.descEn : notice.descNp}
                       </p>
                     </div>
 
@@ -1737,8 +1761,8 @@ export default function SchoolHomePage() {
                 : '© सर्वाधिकार सुरक्षित २०८१ BS / २०२४ - २०२६ AD • श्री छत्रपाली तीर्थादेवी माध्यमिक विद्यालय। वेबसाइट विकास।'
               }
             </p>
-            <p className="text-gray-600 flex items-center gap-1 select-none">
-              <span>{lang === 'en' ? 'Affiliated with NEB & MoE, Nepal' : 'शिक्षा मन्त्रालय र एन.ई.बी, स्वीकृत विवरण'}</span>
+            <p className="text-gray-600">
+              {lang === 'en' ? 'Affiliated with NEB & MoE, Nepal' : 'शिक्षा मन्त्रालय र एन.ई.बी, स्वीकृत विवरण'}
             </p>
           </div>
 
