@@ -247,7 +247,7 @@ const galleryImages = [
   },
   {
     id: 2,
-    src: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop&q=80',
+    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEx5kSy2EbN8hEfvF8DIlhZjdN9ADE4wBjUU3P6oCoRaHIOzFQ7Yg0d3rW6T5YR-0H1M6Ntz4vlRRfkNH30GkA48ml_q6HVNtwLaUCbDbN-RXmd5DjOmlUc_8goJgglES8tnU67=s1464-w784-h1464-rw',
     titleEn: 'Campus Courtyard & Peaceful Assembly Grounds',
     titleNp: 'विद्यालय शैक्षिक परिसर र शान्त आँगन',
     descEn: 'A balanced wide-angle of the secondary wing block with parked bicycles, indicating safe, sustainable, and clean transportation.',
