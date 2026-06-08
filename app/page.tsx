@@ -27,7 +27,8 @@ import {
   UserCheck,
   Building,
   DollarSign,
-  GraduationCap
+  GraduationCap,
+  Lock
 } from 'lucide-react';
 
 // ==========================================
