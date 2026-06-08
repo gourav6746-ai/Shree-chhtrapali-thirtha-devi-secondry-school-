@@ -590,6 +590,9 @@ export default function SchoolHomePage() {
             <a href="#contact-section" className="text-xs uppercase tracking-wider text-gray-200 hover:text-[#c9a227] font-medium transition-colors">
               {lang === 'en' ? 'Contact' : 'सम्पर्क'}
             </a>
+            <Link href="/admin" className="text-xs uppercase tracking-wider bg-[#c9a227] text-[#10192e] px-3 py-1 rounded font-bold hover:bg-yellow-400 transition-colors">
+              {lang === 'en' ? 'Admin' : 'व्यवस्थापक'}
+            </Link>
 
             {/* Language Switch Ribbon */}
             <div className="border-l border-gray-600 h-5 pl-4 flex items-center gap-2">
@@ -684,13 +687,21 @@ export default function SchoolHomePage() {
                 <span>{lang === 'en' ? 'Notices & Board' : 'सूचना पाटी'}</span>
                 <span className="px-1.5 py-0.5 rounded bg-[#c9a227] text-white text-[10px] uppercase font-bold tracking-widest">Live</span>
               </a>
-              <a 
+<a 
                 href="#contact-section" 
                 onClick={() => setNavOpen(false)} 
-                className="text-sm font-medium tracking-wide py-2 text-gray-200 hover:text-[#c9a227]"
+                className="text-sm font-medium tracking-wide py-2 border-b border-gray-800 text-gray-200 hover:text-[#c9a227]"
               >
                 {lang === 'en' ? 'Contact Directory' : 'सम्पर्क ठेगाना'}
               </a>
+              <Link 
+                href="/admin" 
+                onClick={() => setNavOpen(false)} 
+                className="text-sm font-bold tracking-wide py-2 text-[#c9a227] hover:text-yellow-400 flex items-center gap-2"
+              >
+                <Lock className="w-4 h-4" />
+                {lang === 'en' ? 'Admin Login' : 'व्यवस्थापक लगइन'}
+              </Link>
             </div>
           </div>
         )}
@@ -1717,6 +1728,7 @@ export default function SchoolHomePage() {
                 <Link href="/our-team" className="hover:text-[#c9a227] text-white transition-colors">{lang === 'en' ? 'Staff ↗' : 'शिक्षकहरू ↗'}</Link>
                 <a href="#notices-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Notices' : 'सूचना'}</a>
                 <a href="#contact-section" className="hover:text-white transition-colors">{lang === 'en' ? 'Contact' : 'सम्पर्क'}</a>
+                <Link href="/admin" className="hover:text-[#c9a227] text-[#c9a227] transition-colors font-semibold col-span-2">{lang === 'en' ? '🔐 Admin Login' : '🔐 व्यवस्थापक लगइन'}</Link>
               </div>
             </div>
 
