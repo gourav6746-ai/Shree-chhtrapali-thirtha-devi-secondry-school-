@@ -30,7 +30,7 @@ import {
   Lock, 
   LogOut, 
   Users, 
-  Notification, 
+  Bell as Notification, 
   Calendar, 
   Image as ImageIcon, 
   Award, 
