@@ -100,8 +100,8 @@ type Language = 'en' | 'np';
 
 // School Information Datastore
 const schoolInfo = {
-  phone: '+977-76-691017',
-  whatsappUrl: 'https://wa.me/97776691017',
+  phone: '+977-9706711866',
+  whatsappUrl: 'https://wa.me/9779706711866',
   locationEn: 'Pakadi, Mayadevi Rural Municipality-1, Kapilvastu, Nepal',
   locationNp: 'पकडी, मायादेवी गाउँपालिका-१, कपिलवस्तु, नेपाल',
   locationDetailsEn: 'Approx. 10 km east of Taulihwa headquarters',
@@ -239,7 +239,7 @@ function BlockIconPlace(props: any) {
 const galleryImages = [
   {
     id: 1,
-    src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&auto=format&fit=crop&q=80',
+    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEx5kSy2EbN8hEfvF8DIlhZjdN9ADE4wBjUU3P6oCoRaHIOzFQ7Yg0d3rW6T5YR-0H1M6Ntz4vlRRfkNH30GkA48ml_q6HVNtwLaUCbDbN-RXmd5DjOmlUc_8goJgglES8tnU67=s1464-w784-h1464-rw',
     titleEn: 'Main School Block & Welcome Gathering',
     titleNp: 'मुख्य विद्यालय भवन र स्वागत जमघट',
     descEn: 'SCTS high-fidelity secondary facade building showcasing student assemblies, teacher board, and local administrative blocks.',
