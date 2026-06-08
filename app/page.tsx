@@ -239,7 +239,7 @@ function BlockIconPlace(props: any) {
 const galleryImages = [
   {
     id: 1,
-    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEx5kSy2EbN8hEfvF8DIlhZjdN9ADE4wBjUU3P6oCoRaHIOzFQ7Yg0d3rW6T5YR-0H1M6Ntz4vlRRfkNH30GkA48ml_q6HVNtwLaUCbDbN-RXmd5DjOmlUc_8goJgglES8tnU67=s1464-w784-h1464-rw',
+    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-rRHSfz26OhyVKeIrgHSbYOcjK9ImPxCQv2JMX2CHY9Pw1MTViaZwY4wUVPyabldkKs3Ian6YYXgKc5pIBafI5E-NavfTyAQRnUqq4-rhmrlLezWg7X99B4y2uHUmM36FHxk=s1464-w784-h1464-rw',
     titleEn: 'Main School Block & Welcome Gathering',
     titleNp: 'मुख्य विद्यालय भवन र स्वागत जमघट',
     descEn: 'SCTS high-fidelity secondary facade building showcasing student assemblies, teacher board, and local administrative blocks.',
@@ -271,7 +271,8 @@ const galleryImages = [
   },
   {
     id: 5,
-    src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1000&auto=format&fit=crop&q=80',
+    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAFJtjrpnajK17t3V31Y8Ux7DF6lyaiH27stiyw7ewRSPQZqU02dwYtB3qv8DWCYXs3oAqtd3qZvG3t42IIXrhHkP6Ea9iFKZbL3x-h-9oJgIjq57uygqc-jqofJmelACkJQn4fv=s1464-w784-h1464-rw
+      ',
     titleEn: 'Principal Address & Special Guest Assembly',
     titleNp: 'प्रधानाध्यापकको मार्गदर्शन र अन्तरक्रिया सभा',
     descEn: 'School administrative panel and guest speakers delivering moral lessons and motivating guidelines on assembly stages.',
