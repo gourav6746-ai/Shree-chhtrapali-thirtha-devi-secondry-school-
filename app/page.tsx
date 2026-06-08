@@ -308,8 +308,8 @@ const galleryImages = [
 const staffList = [
   {
     id: 1,
-    nameEn: 'Mr. Ram Prasad Sharma',
-    nameNp: 'श्री राम प्रसाद शर्मा',
+    nameEn: 'Mr.Narendra Bahadur Kurmi',
+    nameNp: 'श्री नरेन्द्र बाहदुर कुर्मी',
     roleEn: 'Principal',
     roleNp: 'प्रधानाध्यापक',
     subjectEn: 'School Administration & Policy',
@@ -319,10 +319,10 @@ const staffList = [
   },
   {
     id: 2,
-    nameEn: 'Mrs. Sita Ghalan',
-    nameNp: 'श्रीमती सीता घलान',
-    roleEn: 'Senior Lecturer',
-    roleNp: 'वरिष्ठ माध्यमिक शिक्षक',
+    nameEn: 'Mr ',
+    nameNp: 'श्री बिजय कुर्मी',
+    leEn: '',
+    roleNp: '',
     subjectEn: 'English Language & Literature',
     subjectNp: 'अंग्रेजी भाषा तथा साहित्य',
     initials: 'SG',
