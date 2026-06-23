@@ -85,7 +85,7 @@ const completeTeam = [
     experienceEn: '25+ Years in Pedagogy',
     experienceNp: '२५ वर्ष भन्दा बढी शिक्षण तथा नेतृत्व अनुभव',
     email: 'narendrakurmi.scts@gmail.com',
-    image: 'https://drive.google.com/file/d/1j-3dYm-0YEUS0B4kGGHC-ei62KPJLf_I/view?usp=drivesdk',
+    image: 'https://ibb.co/YBG5BzKD',
   },
   {
     id: 2,
@@ -116,7 +116,7 @@ const completeTeam = [
     experienceEn: '15 Years',
     experienceNp: '१५ वर्ष अध्यापन अनुभव',
     email: 'sita.ghalan@gmail.com',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80',
+    image: 'https://ibb.co/sdffggP3',
     color: 'border-emerald-600',
   },
   {
@@ -131,7 +131,7 @@ const completeTeam = [
     experienceEn: '12 Years',
     experienceNp: '१२ वर्ष व्यावसायिक प्राध्यापन',
     email: 'manoj.mgmt@gmail.com',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
+    image: 'https://ibb.co/n54gTDZ',
     color: 'border-teal-600',
   },
   {
