@@ -356,10 +356,10 @@ export default function OurTeamPage() {
           <Link href="/" className="flex items-center gap-2.5 group">
             <SchoolLogo className="w-9 h-9 rounded-full bg-white p-0.5 shadow-sm group-hover:scale-105 transition-transform" />
             <div className="flex flex-col">
-              <span className="text-xs font-semibold tracking-wide font-serif text-[#c9a227]">
+              <span className="text-sm font-semibold tracking-wide font-serif text-[#c9a227]">
                 {lang === 'en' ? 'Shree Chhatrapali Tirthadevi' : 'श्री छत्रपाली तीर्थादेवी'}
               </span>
-              <span className="text-[9px] uppercase tracking-wider text-gray-300 leading-none">
+              <span className="text-[12px] uppercase tracking-wider text-gray-300 leading-none">
                 {lang === 'en' ? 'Secondary School' : 'माध्यमिक विद्यालय'}
               </span>
             </div>
