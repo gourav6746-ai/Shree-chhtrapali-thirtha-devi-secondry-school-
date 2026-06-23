@@ -556,7 +556,7 @@ export default function SchoolHomePage() {
               <span className="text-base lg:text-xl font-bold tracking-wide font-serif text-[#c9a227]">
                 {lang === 'en' ? 'Shree Chhatrapali Tirthadevi' : 'श्री छत्रपाली तीर्थादेवी'}
               </span>
-              span className="text-xs lg:text-sm uppercase tracking-wider text-gray-300 leading-none">
+              <span className="text-xs lg:text-sm uppercase tracking-wider text-gray-300 leading-none">
                 {lang === 'en' ? 'Secondary School' : 'माध्यमिक विद्यालय'}
               </span>
             </div>
