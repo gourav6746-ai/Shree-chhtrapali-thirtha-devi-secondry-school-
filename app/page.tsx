@@ -1258,56 +1258,55 @@ export default function SchoolHomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Leader 1 - Principal */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
-              <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/5 rounded-bl-3xl"></div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#1a2744]/10 text-[#1a2744]">
-                  {lang === 'en' ? 'Principal & Administrator' : 'प्रधानाध्यापक तथा नेतृत्व'}
-                </span>
-                <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
-                  {lang === 'en' ? 'Mr. Ram Prasad Sharma' : 'श्री राम प्रसाद शर्मा'}
-                </h3>
-                <p className="text-xs text-slate-500 font-sans mt-0.5">
-                  {lang === 'en' ? 'School Administration & Policy' : 'विद्यालय प्रशासन तथा नेतृत्व'}
-                </p>
-                <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
-                <p className="text-xs text-gray-500 leading-relaxed italic">
-                  {lang === 'en'
-                    ? '"Committing to fostering inclusive values, academic records, and secure student tracks since inception."'
-                    : '"शुरुवातदेखि नै समावेशी मूल्य मान्यता, शैक्षिक रेकर्ड र सुरक्षित विद्यार्थी ट्र्याकहरू बढाउन प्रतिबद्ध छौं।"'}
-                </p>
-              </div>
-              <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-[#c9a227] flex items-center justify-between">
-                <span>RPS • SCTS</span>
-                <span className="font-mono">principal.scts@gmail.com</span>
-              </div>
-            </div>
-
-            {/* Leader 2 - Vice Coordinator */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
-              <div className="absolute right-0 top-0 w-16 h-16 bg-[#1a2744]/5 rounded-bl-3xl"></div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">
-                  {lang === 'en' ? 'Senior Lecturer' : 'वरिष्ठ माध्यमिक शिक्षक'}
-                </span>
-                <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
-                  {lang === 'en' ? 'Mrs. Sita Ghalan' : 'श्रीमती सीता घलान'}
-                </h3>
-                <p className="text-xs text-slate-500 font-sans mt-0.5">
-                  {lang === 'en' ? 'English Language & Literature' : 'अंग्रेजी भाषा तथा साहित्य'}
-                </p>
-                <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
-                <p className="text-xs text-gray-500 leading-relaxed italic">
-                  {lang === 'en'
-                    ? '"Empowering local girls and underprivileged youth to communicate with absolute confidence globally."'
-                    : '"स्थानीय बालिकाहरू र पिछडिएका युवाहरूलाई विश्वव्यापी रूपमा पूर्ण आत्मविश्वासका साथ सञ्चार गर्न सशक्त बनाउने..."'}
-                </p>
-              </div>
-              <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-emerald-700 flex items-center justify-between">
-                <span>SG • SCTS</span>
-                <span className="font-mono">sita.ghalan@gmail.com</span>
-              </div>
-            </div>
+<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+  <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/5 rounded-bl-3xl"></div>
+  <div>
+    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#1a2744]/10 text-[#1a2744]">
+      {lang === 'en' ? 'Principal & Administrator' : 'प्रधानाध्यापक तथा नेतृत्व'}
+    </span>
+    <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
+      {lang === 'en' ? 'Mr. Narendra Bahadur Kurmi' : 'श्री नरेन्द्र बहादुर कुर्मी'}
+    </h3>
+    <p className="text-xs text-slate-500 font-sans mt-0.5">
+      {lang === 'en' ? 'School Administration & Policy' : 'विद्यालय प्रशासन तथा नेतृत्व'}
+    </p>
+    <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
+    <p className="text-xs text-gray-500 leading-relaxed italic">
+      {lang === 'en'
+        ? '"Committing to fostering inclusive values, academic records, and secure student tracks since inception."'
+        : '"शुरुवातदेखि नै समावेशी मूल्य, शैक्षिक उत्कृष्टता र विद्यार्थीको सुरक्षित भविष्यका लागि प्रतिबद्ध।"'}
+    </p>
+  </div>
+  <div className="mt-4 flex items-center justify-between">
+    <span className="text-[10px] font-bold text-[#1a2744]/40 tracking-widest">NBK • SCTS</span>
+    <span className="text-[10px] text-[#c9a227] font-mono">principal.scts@gmail.com</span>
+  </div>
+</div>
+            {/* Leader 2 - Vice Principal */}
+<div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+  <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/5 rounded-bl-3xl"></div>
+  <div>
+    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#c9a227]/10 text-[#c9a227]">
+      {lang === 'en' ? 'Vice Principal' : 'सहायक प्रधानाध्यापक'}
+    </span>
+    <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
+      {lang === 'en' ? 'Mr. Bijay Bahadur Kurmi' : 'श्री बिजय बहादुर कुर्मी'}
+    </h3>
+    <p className="text-xs text-slate-500 font-sans mt-0.5">
+      {lang === 'en' ? 'School Administration & Coordination' : 'विद्यालय प्रशासन तथा समन्वय'}
+    </p>
+    <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
+    <p className="text-xs text-gray-500 leading-relaxed italic">
+      {lang === 'en'
+        ? '"Dedicated to academic coordination and student welfare with years of committed service."'
+        : '"वर्षौंको समर्पित सेवाद्वारा शैक्षिक समन्वय र विद्यार्थी कल्याणमा प्रतिबद्ध।"'}
+    </p>
+  </div>
+  <div className="mt-4 flex items-center justify-between">
+    <span className="text-[10px] font-bold text-[#1a2744]/40 tracking-widest">BBK • SCTS</span>
+    <span className="text-[10px] text-[#c9a227] font-mono">viceprincipal.scts@gmail.com</span>
+  </div>
+</div>
 
             {/* Leader 3 - Honored Retired Legend */}
             <div className="bg-white rounded-2xl border-2 border-dashed border-[#c9a227]/30 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
