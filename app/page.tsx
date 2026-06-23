@@ -553,10 +553,10 @@ export default function SchoolHomePage() {
           <a href="#school-portal" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
             <SchoolLogo className="w-9 h-9 rounded-full bg-white p-0.5 shadow-sm" />
             <div className="flex flex-col select-none">
-              <span className="text-base font-bold tracking-wide font-serif text-[#c9a227]">
+              <span className="text-base lg:text-xl font-bold tracking-wide font-serif text-[#c9a227]">
                 {lang === 'en' ? 'Shree Chhatrapali Tirthadevi' : 'श्री छत्रपाली तीर्थादेवी'}
               </span>
-              <span className="text-xs uppercase tracking-wider text-gray-300 leading-none">
+              span className="text-xs lg:text-sm uppercase tracking-wider text-gray-300 leading-none">
                 {lang === 'en' ? 'Secondary School' : 'माध्यमिक विद्यालय'}
               </span>
             </div>
