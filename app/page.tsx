@@ -271,8 +271,7 @@ const galleryImages = [
   },
   {
     id: 5,
-    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAFJtjrpnajK17t3V31Y8Ux7DF6lyaiH27stiyw7ewRSPQZqU02dwYtB3qv8DWCYXs3oAqtd3qZvG3t42IIXrhHkP6Ea9iFKZbL3x-h-9oJgIjq57uygqc-jqofJmelACkJQn4fv=s1464-w784-h1464-rw
-      ',
+    src: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAFJtjrpnajK17t3V31Y8Ux7DF6lyaiH27stiyw7ewRSPQZqU02dwYtB3qv8DWCYXs3oAqtd3qZvG3t42IIXrhHkP6Ea9iFKZbL3x-h-9oJgIjq57uygqc-jqofJmelACkJQn4fv=s1464-w784-h1464-rw',
     titleEn: 'Principal Address & Special Guest Assembly',
     titleNp: 'प्रधानाध्यापकको मार्गदर्शन र अन्तरक्रिया सभा',
     descEn: 'School administrative panel and guest speakers delivering moral lessons and motivating guidelines on assembly stages.',
