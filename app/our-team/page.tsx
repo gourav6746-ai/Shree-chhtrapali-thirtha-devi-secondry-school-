@@ -124,6 +124,8 @@ const completeTeam = [
     category: 'faculty',
     nameEn: 'Mr chiran poudel',
     nameNp: 'श्री चिरान पौडेल',
+    roleEn: 'Senior Lecturer',
+    roleNp: 'वरिष्ठ माध्यमिक शिक्षक',
     subjectEn: 'ENGLISH',
     subjectNp: ' अङग्रेजी',
     experienceEn: '12 Years',
