@@ -1308,34 +1308,34 @@ export default function SchoolHomePage() {
   </div>
 </div>
 
-            {/* Leader 3 - Honored Retired Legend */}
-            <div className="bg-white rounded-2xl border-2 border-dashed border-[#c9a227]/30 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
-              <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/10 rounded-bl-3xl"></div>
-              <div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-[#c9a227]">
-                    {lang === 'en' ? 'Honored Veteran Founder' : 'परम आदरणीय संस्थापक'}
-                  </span>
-                  <span className="text-xs">🏆</span>
-                </div>
-                <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
-                  {lang === 'en' ? 'Mr. Dev Narayan Yadav' : 'श्री देव नारायण यादव'}
-                </h3>
-                <p className="text-xs text-amber-700 font-sans mt-0.5 font-bold">
-                  {lang === 'en' ? 'Former Principal — Legacy Advisor' : 'पूर्व प्रधानाध्यापक — अनवरत सल्लाहकार'}
-                </p>
-                <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
-                <p className="text-xs text-gray-500 leading-relaxed italic">
-                  {lang === 'en'
-                    ? '"SCTS owes its legendary 35+ years foundation to his structural blueprints and heart-led public service efforts."'
-                    : '"३ दशक लामो योगदान र उत्कृष्ट सामुदायिक चेतनाका मुख्य उत्प्रेरक व्यक्तित्व। हामी उहाँको नीतिप्रति कृतज्ञ छौं।"'}
-                </p>
-              </div>
-              <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-[#c9a227] flex items-center justify-between">
-                <span>LEGACY LEAD</span>
-                <span className="font-mono">devnarayan@gmail.com</span>
-              </div>
-            </div>
+            {/* Leader 3 - School Chairman */}
+<div className="bg-white rounded-2xl border-2 border-dashed border-[#c9a227]/30 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group overflow-hidden relative">
+  <div className="absolute right-0 top-0 w-16 h-16 bg-[#c9a227]/10 rounded-bl-3xl"></div>
+  <div>
+    <div className="flex items-center gap-1">
+      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-[#c9a227]">
+        {lang === 'en' ? 'School Chairman' : 'विद्यालय अध्यक्ष'}
+      </span>
+      <span className="text-xs">🏆</span>
+    </div>
+    <h3 className="font-serif text-[18px] font-bold text-[#1a2744] mt-3 leading-snug">
+      {lang === 'en' ? 'Mr. Maksudan Prasad Kurmi' : 'श्री मक्सुदन प्रसाद कुर्मी'}
+    </h3>
+    <p className="text-xs text-amber-700 font-sans mt-0.5 font-bold">
+      {lang === 'en' ? 'School Chairman — Management Committee' : 'विद्यालय व्यवस्थापन समिति अध्यक्ष'}
+    </p>
+    <div className="w-10 h-[1.5px] bg-[#c9a227]/50 my-3"></div>
+    <p className="text-xs text-gray-500 leading-relaxed italic">
+      {lang === 'en'
+        ? '"Committed to building a strong foundation for quality education and community development in Pakadi."'
+        : '"पकडीमा गुणस्तरीय शिक्षा र सामुदायिक विकासका लागि बलियो जग निर्माणमा सदैव प्रतिबद्ध।"'}
+    </p>
+  </div>
+  <div className="border-t border-gray-100 pt-3 mt-4 text-xs font-medium text-[#c9a227] flex items-center justify-between">
+    <span>CHAIRMAN • SCTS</span>
+    <span className="font-mono">chairman.scts@gmail.com</span>
+  </div>
+</div>
 
           </div>
 
