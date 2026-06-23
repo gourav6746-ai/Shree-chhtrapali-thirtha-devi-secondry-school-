@@ -482,7 +482,7 @@ export default function SchoolHomePage() {
         dateNp: row.c[5]?.v || '',
         isNew: row.c[6]?.v === true || row.c[6]?.v === 'true',
       }));
-      setNoticesData(notices);
+      setNoticesData(notices.reverse());
     })
     .catch(() => setNoticesData(noticesList));
 }, []);
