@@ -463,15 +463,29 @@ export default function SchoolHomePage() {
     };
   }, [lang]); // Trigger fresh observer on language translation switch
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formState.name || !formState.phone) return;
+  const handleFormSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!formState.name || !formState.phone) return;
+  
+  const res = await fetch('https://formspree.io/f/mjgqkgra', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: formState.name,
+      phone: formState.phone,
+      program: formState.program,
+      message: formState.message,
+    }),
+  });
+
+  if (res.ok) {
     setFormSubmitted(true);
     setTimeout(() => {
       setFormState({ name: '', phone: '', program: 'general', message: '' });
       setFormSubmitted(false);
     }, 5000);
-  };
+  }
+};
 
   const handleNextPhoto = () => {
     if (lightboxIndex !== null) {
