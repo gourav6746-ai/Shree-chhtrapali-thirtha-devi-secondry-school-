@@ -432,6 +432,7 @@ export default function SchoolHomePage() {
     message: ''
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [noticesData, setNoticesData] = useState(noticesList);
 
   // Monitor Scroll for Navbar Shrink Effect
   useEffect(() => {
@@ -462,7 +463,29 @@ export default function SchoolHomePage() {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, [lang]); // Trigger fresh observer on language translation switch
-
+ useEffect(() => {
+  const SHEET_ID = '1xGwzKUfbOkwg93mRvymQAxV8_XeepbM4QeJ-tN87GYo';
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+  
+  fetch(url)
+    .then(res => res.text())
+    .then(text => {
+      const json = JSON.parse(text.substring(47).slice(0, -2));
+      const rows = json.table.rows;
+      const notices = rows.map((row: any, i: number) => ({
+        id: i + 1,
+        titleEn: row.c[0]?.v || '',
+        titleNp: row.c[1]?.v || '',
+        descEn: row.c[2]?.v || '',
+        descNp: row.c[3]?.v || '',
+        dateEn: row.c[4]?.v || '',
+        dateNp: row.c[5]?.v || '',
+        isNew: row.c[6]?.v === true || row.c[6]?.v === 'true',
+      }));
+      setNoticesData(notices);
+    })
+    .catch(() => setNoticesData(noticesList));
+}, []);
   const handleFormSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   if (!formState.name || !formState.phone) return;
@@ -1432,7 +1455,7 @@ export default function SchoolHomePage() {
 
             {/* Right side: List of notices */}
             <div className="lg:col-span-8 flex flex-col gap-6">
-              {noticesList.map((notice) => {
+              {noticesData.map((notice) => {
                 return (
                   <div 
                     key={notice.id}
