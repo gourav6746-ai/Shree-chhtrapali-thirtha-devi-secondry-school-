@@ -85,7 +85,7 @@ const completeTeam = [
     experienceEn: '25+ Years in Pedagogy',
     experienceNp: '२५ वर्ष भन्दा बढी शिक्षण तथा नेतृत्व अनुभव',
     email: 'narendrakurmi.scts@gmail.com',
-    image: 'https://mega.nz/file/qpQE3CpT#494A5U0BGPxKpDTYvyJjLHPwVZ8sm_kxtpnSnHEhF1M',
+    image: 'https://drive.google.com/file/d/1j-3dYm-0YEUS0B4kGGHC-ei62KPJLf_I/view?usp=drivesdk',
   },
   {
     id: 2,
